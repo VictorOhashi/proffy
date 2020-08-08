@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "proffy",
   "private": true,
   "scripts": {
     "transpile": "lerna run transpile"
