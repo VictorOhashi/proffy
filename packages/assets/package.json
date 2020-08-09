@@ -2,14 +2,18 @@
   "name": "@proffy/assets",
   "version": "0.1.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
-    "pre:build": "svgr --icon -d dist src --memo",
+    "pre:build": "rimraf ./dist && svgr --icon -d dist src --memo",
     "post:build": "node ./generate-compiled-exports",
     "transpile": "yarn pre:build && yarn post:build"
   },
   "dependencies": {
     "@svgr/cli": "^5.4.0"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   },
   "files": [
     "dist"

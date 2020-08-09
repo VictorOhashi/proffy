@@ -1,7 +1,5 @@
 import Head from 'next/head';
 
-import {} from '@proffy/assets'
-
 const Home = () => {
   return (
     <div>
