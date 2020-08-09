@@ -5,14 +5,23 @@
   "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
-    "pre:build": "rimraf ./dist && svgr --icon -d dist src --memo",
-    "post:build": "node ./generate-compiled-exports",
-    "transpile": "yarn pre:build && yarn post:build"
+    "pre:build": "rimraf ./build && svgr -d build src --memo && node ./generate",
+    "post:build": "rimraf ./dist  && babel build --extensions \".js\" --out-dir dist --copy-files --no-copy-ignored",
+    "build:types": "node ./generate --ts && rimraf ./build",
+    "transpile": "yarn pre:build && yarn post:build && yarn build:types"
   },
   "dependencies": {
-    "@svgr/cli": "^5.4.0"
+    "@svgr/cli": "^5.4.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "rimraf": "^3.0.2"
   },
   "files": [

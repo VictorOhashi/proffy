@@ -1,13 +1,15 @@
 import Head from 'next/head';
 
+import Landing from '../containers/Landing';
+
 const Home = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Proffy</title>
       </Head>
-      aaaa
-    </div>
+      <Landing />
+    </>
   );
 };
 

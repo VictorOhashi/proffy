@@ -33,10 +33,10 @@ class MyDocument extends Document {
       <html dir="ltr">
         <Head>
           <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Poppins&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />
