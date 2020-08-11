@@ -5,9 +5,9 @@
   "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
-    "pre:build": "rimraf ./build && svgr -d build src --memo && node ./generate",
-    "post:build": "rimraf ./dist  && babel build --extensions \".js\" --out-dir dist --copy-files --no-copy-ignored",
-    "build:types": "node ./generate --ts && rimraf ./build",
+    "pre:build": "rimraf ./temp && svgr -d temp ./ --memo && node ./generate",
+    "post:build": "rimraf ./dist && babel ./temp -d dist",
+    "build:types": "node ./generate --ts && rimraf ./temp",
     "transpile": "yarn pre:build && yarn post:build && yarn build:types"
   },
   "dependencies": {
@@ -25,6 +25,8 @@
     "rimraf": "^3.0.2"
   },
   "files": [
-    "dist"
+    "dist",
+    "icons",
+    "images"
   ]
 }

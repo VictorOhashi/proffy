@@ -2,18 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 const distDir = path.resolve('./dist');
-const buildDist = path.resolve('./build');
+const buildDir = path.resolve('./temp');
 
 const buildTs = process.argv.includes('--ts');
 
 const readDistFiles = () => {
   let folder = [];
-  fs.readdirSync(buildDist).forEach((src) => {
-    if (src.match(/js|ts/)) {
+  fs.readdirSync(buildDir).forEach((src) => {
+    if (!src.match(/images|icons/)) {
       return;
     }
 
-    fs.readdirSync(path.resolve(buildDist, src))
+    fs.readdirSync(path.resolve(buildDir, src))
       .filter((item) => item.includes('.js') && !item.includes('index'))
       .map((f) => f.replace('.js', ''))
       .forEach((file) => {
@@ -35,7 +35,7 @@ const generateJsExports = () => {
   } catch (err) {
     return console.log(err);
   }
-  fs.writeFileSync(path.resolve(buildDist, 'index.js'), content);
+  fs.writeFileSync(path.resolve(buildDir, 'index.js'), content);
 };
 
 const generateTsModules = () => {
