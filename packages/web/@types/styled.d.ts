@@ -24,5 +24,6 @@ declare module 'styled-components' {
       boxBase: '#FFFFFF';
       boxFooter: '#FAFAFC';
     };
+    elevation: Array<string>;
   }
 }

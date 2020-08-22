@@ -27,6 +27,11 @@ const theme: DefaultTheme = {
     boxBase: '#FFFFFF',
     boxFooter: '#FAFAFC',
   },
+  elevation: [
+    `box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);`,
+    `box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);`,
+    `box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);`,
+  ],
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -56,6 +61,7 @@ const GlobalStyles = createGlobalStyle`
 
   body, input, button, textarea {
     font: 500 1.6rem Poppins;
+    color: ${({ theme }) => theme.colors.baseText}
   }
 
   @media (min-width: 700px) {

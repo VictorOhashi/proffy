@@ -4,21 +4,14 @@ import Study from '@proffy/assets/icons/study.svg';
 import GiveClasses from '@proffy/assets/icons/give-classes.svg';
 import PurpleHeart from '@proffy/assets/icons/purple-heart.svg';
 
-import styled from 'styled-components';
-
-import PageLanding from './components/PageLanding';
-import PageLandingContent from './components/PageLandingContent';
-import LogoContainer from './components/LogoContainer';
+import {
+  PageLanding,
+  PageLandingContent,
+  LogoContainer,
+  ButtonContainer,
+  TotalConnections,
+} from './styled';
 import AnchorButton from './components/AnchorButton';
-import TotalConnections from './components/TotalConnections';
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 3.2rem 0;
-  cursor: pointer;
-  grid-area: buttons;
-`;
 
 const Landing = () => {
   return (
