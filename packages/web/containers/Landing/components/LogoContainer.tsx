@@ -23,8 +23,14 @@ const LogoContainer = styled.div`
     text-align: left;
     margin: 0;
 
-    svg {
+    img {
       height: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    img {
+      width: 100%;
     }
   }
 `;

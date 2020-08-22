@@ -58,8 +58,6 @@ const GlobalStyles = createGlobalStyle`
     font: 500 1.6rem Poppins;
   }
 
-
-
   @media (min-width: 700px) {
     :root {
       font-size: 62.5%;

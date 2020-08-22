@@ -8,7 +8,7 @@ const TotalConnections = styled.span`
   white-space: nowrap;
   grid-area: total;
 
-  svg {
+  img {
     margin-left: 0.8rem;
   }
 `;
