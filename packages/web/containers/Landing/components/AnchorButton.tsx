@@ -19,7 +19,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
   color: ${({ theme }) => theme.colors.buttonText};
   background-color: ${({ theme, color }) => theme.colors[color]};
   transition: background-color 0.2s;
-  ${({ theme }) => theme.elevation[0]};
+  ${({ theme }) => theme.elevation[3]};
 
   :first-child {
     margin-right: 1.6rem;
@@ -27,7 +27,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
 
   :hover {
     background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
-    ${({ theme }) => theme.elevation[3]};
+    ${({ theme }) => theme.elevation[0]};
   }
 
   img {

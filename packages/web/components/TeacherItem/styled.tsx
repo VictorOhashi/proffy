@@ -93,11 +93,11 @@ export const ContactButton = styled.button`
   align-items: center;
   justify-content: space-evenly;
   transition: 0.2s;
-  ${({ theme }) => theme.elevation[0]};
+  ${({ theme }) => theme.elevation[3]};
 
   :hover {
     background: ${({ theme }) => theme.colors.secundaryDark};
-    ${({ theme }) => theme.elevation[3]};
+    ${({ theme }) => theme.elevation[0]};
   }
 
   @media (min-width: 700px) {

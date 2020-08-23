@@ -20,10 +20,14 @@ const Landing = () => (
     <PageLanding>
       <PageLandingContent>
         <LogoContainer>
-          <img src={Logo} style={{ height: '10rem' }} />
+          <img src={Logo} style={{ height: '10rem' }} alt="Proffy logo" />
           <h2>Sua plataforma de estudos online.</h2>
         </LogoContainer>
-        <img src={LandingImg} style={{ gridArea: 'hero', width: '100%' }} />
+        <img
+          src={LandingImg}
+          style={{ gridArea: 'hero', width: '100%' }}
+          alt="Proffy image"
+        />
         <ButtonContainer>
           <AnchorButton
             href="/TeacherList"
@@ -31,7 +35,7 @@ const Landing = () => (
             color="primaryLighter"
             hoverColor="primaryLight"
           >
-            <img src={Study} />
+            <img src={Study} alt="Imagem livro" />
             Estudar
           </AnchorButton>
           <AnchorButton
@@ -40,13 +44,13 @@ const Landing = () => (
             color="secundary"
             hoverColor="secundaryDark"
           >
-            <img src={GiveClasses} />
+            <img src={GiveClasses} alt="Imagem apresentação" />
             Dar aulas
           </AnchorButton>
         </ButtonContainer>
         <TotalConnections>
           Total de 200 conexões já realizadas
-          <img src={PurpleHeart} />
+          <img src={PurpleHeart} alt="Coração" />
         </TotalConnections>
       </PageLandingContent>
     </PageLanding>

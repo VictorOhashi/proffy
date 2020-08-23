@@ -30,7 +30,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html dir="ltr">
+      <html dir="ltr" lang="pt-BR">
         <Head>
           <meta charSet="utf-8" />
           <link
