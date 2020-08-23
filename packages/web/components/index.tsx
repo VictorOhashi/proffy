@@ -1,5 +1,7 @@
 export { default as FadeIn } from './FadeIn';
 
+export { default as Fieldset } from './Fieldset';
+
 export { default as Input } from './Input';
 
 export { default as PageHeader } from './PageHeader';
