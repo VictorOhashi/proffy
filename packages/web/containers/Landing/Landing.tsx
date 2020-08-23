@@ -13,8 +13,10 @@ import {
 } from './styled';
 import AnchorButton from './components/AnchorButton';
 
-const Landing = () => {
-  return (
+import { FadeIn } from '../../components';
+
+const Landing = () => (
+  <FadeIn background="primary" orientation="right-to-left">
     <PageLanding>
       <PageLandingContent>
         <LogoContainer>
@@ -39,7 +41,7 @@ const Landing = () => {
             hoverColor="secundaryDark"
           >
             <img src={GiveClasses} />
-            Estudar
+            Dar aulas
           </AnchorButton>
         </ButtonContainer>
         <TotalConnections>
@@ -48,7 +50,7 @@ const Landing = () => {
         </TotalConnections>
       </PageLandingContent>
     </PageLanding>
-  );
-};
+  </FadeIn>
+);
 
 export default Landing;

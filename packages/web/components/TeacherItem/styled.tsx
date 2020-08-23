@@ -97,7 +97,7 @@ export const ContactButton = styled.button`
 
   :hover {
     background: ${({ theme }) => theme.colors.secundaryDark};
-    ${({ theme }) => theme.elevation[2]};
+    ${({ theme }) => theme.elevation[3]};
   }
 
   @media (min-width: 700px) {

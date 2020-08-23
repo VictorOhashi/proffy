@@ -27,7 +27,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
 
   :hover {
     background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
-    ${({ theme }) => theme.elevation[2]};
+    ${({ theme }) => theme.elevation[3]};
   }
 
   img {

@@ -7,7 +7,6 @@ export const PageLanding = styled.div`
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colors.primaryText};
-  background: ${({ theme }) => theme.colors.primary};
 `;
 
 export const PageLandingContent = styled.div`

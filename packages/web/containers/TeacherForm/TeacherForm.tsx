@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { PageHeader } from '../../components';
+import { FadeIn, PageHeader } from '../../components';
 
 const Container = styled.div`
   width: 100%;
@@ -9,9 +9,11 @@ const Container = styled.div`
 
 export const TeacherForm = () => {
   return (
-    <Container>
-      <PageHeader title="Que incrível que você quer dar aulas." />
-    </Container>
+    <FadeIn orientation="down-to-up">
+      <Container>
+        <PageHeader title="Que incrível que você quer dar aulas." />
+      </Container>
+    </FadeIn>
   );
 };
 
