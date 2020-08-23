@@ -1,5 +1,5 @@
 import WarningIcon from '@proffy/assets/icons/warning.svg';
-import { FadeIn, PageHeader, Input } from '../../components';
+import { FadeIn, PageHeader, Input, Textarea } from '../../components';
 
 import {
   Container,
@@ -28,6 +28,7 @@ export const TeacherForm = () => {
             <Input name="avatar" label="Avatar" />
 
             <Input name="whatsapp" label="Whatsapp" />
+            <Textarea name="Bio" label="Biografia" />
           </Fieldset>
 
           <Fieldset>

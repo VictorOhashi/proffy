@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  margin-top: 3.2rem;
+  margin-top: 1.8rem;
 
   @media (min-width: 700px) {
     display: grid;

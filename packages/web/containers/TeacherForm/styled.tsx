@@ -40,7 +40,7 @@ export const Fieldset = styled.fieldset`
 export const Legend = styled.legend`
   font: 700 2.4rem Archivo;
   color: ${({ theme }) => theme.colors.titleText};
-  margin-bottom: 2.4rem;
+  margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
