@@ -49,6 +49,37 @@ export const Legend = styled.legend`
   border-bottom: 1px solid ${({ theme }) => theme.colors.lineWhite};
 `;
 
+export const LegendButton = styled.button`
+  background: none;
+  border: 0;
+  color: ${({ theme }) => theme.colors.primary};
+  font: 700 1.6rem Archivo;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  :hover {
+    color: ${({ theme }) => theme.colors.primaryDark};
+  }
+`;
+
+export const TimeContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.6rem;
+
+  & :first-child {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 700px) {
+    grid-template-columns: 2fr repeat(2, 1fr);
+
+    & :first-child {
+      grid-column: initial;
+    }
+  }
+`;
+
 export const Footer = styled.footer`
   padding: 4rem 2.4rem;
   background: ${({ theme }) => theme.colors.lineWhite};
