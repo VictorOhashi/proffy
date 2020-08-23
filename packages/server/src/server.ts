@@ -1,10 +1,11 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import routes from './routes';
 
 const app = express();
-
-app.post('/users', (req, res) => {
-  const users = [{ name: 'nome', text: 'text' }];
-  return res.json(users);
-});
+app.use(cors);
+app.use(bodyParser.json());
+app.use(routes);
 
 app.listen(3333);
