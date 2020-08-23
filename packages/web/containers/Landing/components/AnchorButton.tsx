@@ -3,7 +3,7 @@ import Link, { LinkProps } from 'next/link';
 import styled from 'styled-components';
 
 type StyledAnchorButtonProps = {
-  color: string;
+  color: Colors;
   hoverColor: string;
 };
 

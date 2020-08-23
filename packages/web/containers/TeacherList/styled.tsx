@@ -19,6 +19,10 @@ export const Form = styled.form`
     column-gap: 16px;
     position: absolute;
     bottom: -28px;
+
+    & > div {
+      margin-top: 0 !important;
+    }
   }
 `;
 

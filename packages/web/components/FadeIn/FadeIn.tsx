@@ -45,7 +45,7 @@ type RootDivProps = {
 
 const RootDiv = styled.div<RootDivProps>`
   background: ${({ theme, background }) => theme.colors[background]};
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
 `;

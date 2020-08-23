@@ -17,16 +17,14 @@ export const InputBlock = styled.div`
   & + & {
     margin-top: 1.4rem;
   }
-
-  @media (min-width: 700px) {
-    & + & {
-      margin-top: 0;
-    }
-  }
 `;
 
-export const Label = styled.label`
-  color: ${({ theme }) => theme.colors.primaryText};
+type LabelProps = {
+  color: Colors;
+};
+
+export const Label = styled.label<LabelProps>`
+  color: ${({ theme, color }) => theme.colors[color]};
   font-size: 1.4rem;
 `;
 

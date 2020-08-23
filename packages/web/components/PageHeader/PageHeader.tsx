@@ -9,13 +9,19 @@ import {
   AnchorButton,
   HeaderContent,
   HeaderTitle,
+  HeaderSubtitle,
 } from './styled';
 
 type PageHeaderProps = {
   title: string;
+  subTitle?: string;
 };
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({
+  title,
+  subTitle,
+  children,
+}) => {
   return (
     <Header>
       <TopBarContainer>
@@ -28,6 +34,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
       </TopBarContainer>
       <HeaderContent>
         <HeaderTitle>{title}</HeaderTitle>
+        {subTitle && <HeaderSubtitle>{subTitle}</HeaderSubtitle>}
         {children}
       </HeaderContent>
     </Header>

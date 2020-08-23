@@ -65,3 +65,11 @@ export const HeaderTitle = styled.strong`
     max-width: 350px;
   }
 `;
+
+export const HeaderSubtitle = styled.p`
+  max-width: 30rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: ${({ theme }) => theme.colors.primaryText};
+  margin-top: 2.4rem;
+`;

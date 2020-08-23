@@ -1,17 +1,30 @@
 import { InputBlock, Label, StyledInput } from './styled';
 
-type InputProps = {
-  id: string;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   label: string;
-};
+  color?: Colors;
+}
 
-export const Input: React.FC<InputProps> = ({ id, label }) => {
+export const Input: React.FC<InputProps> = ({
+  name,
+  label,
+  color,
+  ...rest
+}) => {
   return (
     <InputBlock>
-      <Label htmlFor={id}>{label}</Label>
-      <StyledInput type="text" id={id} />
+      <Label htmlFor={name} color={color}>
+        {label}
+      </Label>
+      <StyledInput id={name} name={name} {...rest} />
     </InputBlock>
   );
+};
+
+Input.defaultProps = {
+  type: 'text',
+  color: 'complementText',
 };
 
 export default Input;

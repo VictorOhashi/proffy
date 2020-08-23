@@ -7,9 +7,9 @@ export const TeacherList = () => {
       <Container>
         <PageHeader title="Estes são os proffys disponíveis">
           <Form>
-            <Input id="subject" label="Máteria" />
-            <Input id="week_day" label="Dia da semana" />
-            <Input id="time" label="Hora" />
+            <Input name="subject" label="Máteria" color="primaryText" />
+            <Input name="week_day" label="Dia da semana" color="primaryText" />
+            <Input name="time" label="Hora" type="time" color="primaryText" />
           </Form>
         </PageHeader>
         <MainContent>
