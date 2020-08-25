@@ -37,5 +37,3 @@ export const StyledSelect = styled.select`
   font: 1.6rem Archivo;
   ${({ theme }) => theme.elevation[0]};
 `;
-
-export const Option = styled.option``;

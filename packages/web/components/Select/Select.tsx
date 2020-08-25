@@ -1,4 +1,4 @@
-import { SelectBlock, Label, StyledSelect, Option } from './styled';
+import { SelectBlock, Label, StyledSelect } from './styled';
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
@@ -21,18 +21,18 @@ export const Select: React.FC<SelectProps> = ({
         {label}
       </Label>
       <StyledSelect id={name} name={name} {...rest}>
-        <Option value="" disabled hidden>
+        <option value="" disabled hidden>
           {placeholder}
-        </Option>
+        </option>
 
         {options.length === 0 && (
-          <Option disabled>Não há opções disponíveis</Option>
+          <option disabled>Não há opções disponíveis</option>
         )}
 
         {options.map(({ value, label }) => (
-          <Option key={`${label}-${value}`} value={value}>
+          <option key={`${label}-${value}`} value={value}>
             {label}
-          </Option>
+          </option>
         ))}
       </StyledSelect>
     </SelectBlock>
