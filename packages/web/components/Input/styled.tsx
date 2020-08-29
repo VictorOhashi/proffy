@@ -36,4 +36,13 @@ export const StyledInput = styled.input`
   padding: 0 1.6rem;
   font: 1.6rem Archivo;
   ${({ theme }) => theme.elevation[0]};
+
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;

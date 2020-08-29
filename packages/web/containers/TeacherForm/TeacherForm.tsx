@@ -7,9 +7,8 @@ import {
   Input,
   Textarea,
   Select,
+  ScheduleContainer,
 } from '../../components';
-
-import TimeContainer from './components/TimeContainer';
 
 import { Container, Content, Footer, FooterText, SaveButton } from './styled';
 
@@ -42,10 +41,14 @@ export const TeacherForm = () => {
               ]}
             />
 
-            <Input name="custo" label="Custo da sua hora por aula" />
+            <Input
+              name="custo"
+              label="Custo da sua hora por aula"
+              type="number"
+            />
           </Fieldset>
 
-          <TimeContainer />
+          <ScheduleContainer />
 
           <Footer>
             <FooterText>
