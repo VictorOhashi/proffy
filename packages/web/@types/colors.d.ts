@@ -1,19 +1,3 @@
-declare type Colors =
-  | 'background'
-  | 'primaryLighter'
-  | 'primaryLight'
-  | 'primary'
-  | 'primaryDark'
-  | 'primaryDarker'
-  | 'secundary'
-  | 'secundaryDark'
-  | 'primaryTitle'
-  | 'primaryText'
-  | 'titleText'
-  | 'complementText'
-  | 'baseText'
-  | 'lineWhite'
-  | 'inputBackground'
-  | 'buttonText'
-  | 'boxBase'
-  | 'boxFooter';
+import defautlTheme from '../styles/theme';
+
+declare type Colors = keyof typeof defautlTheme.colors;
