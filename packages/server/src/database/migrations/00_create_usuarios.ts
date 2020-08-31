@@ -4,6 +4,7 @@ export async function up(knex: Knex) {
   return knex.schema.createTable('usuarios', (table) => {
     table.increments('id').primary();
     table.string('nome').notNullable();
+    table.string('email').notNullable();
     table.string('avatar').notNullable();
     table.string('whatsapp').notNullable();
     table.string('bio').notNullable();

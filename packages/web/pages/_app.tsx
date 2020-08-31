@@ -1,8 +1,10 @@
 import { AppProps } from 'next/app';
 
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { SWRConfig } from 'swr';
 import { AnimatePresence } from 'framer-motion';
 import defaultTheme from '../styles/theme';
+import api from '../services/api';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -42,14 +44,19 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
+const axiosFetcher = (url: string, method: string) =>
+  api[method](url).then((res: { data: any }) => res.data);
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <AnimatePresence exitBeforeEnter>
-      <ThemeProvider theme={defaultTheme}>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </AnimatePresence>
+    <SWRConfig value={{ refreshInterval: 3000, fetcher: axiosFetcher }}>
+      <AnimatePresence exitBeforeEnter>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AnimatePresence>
+    </SWRConfig>
   );
 };
 

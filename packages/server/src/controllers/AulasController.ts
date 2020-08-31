@@ -43,13 +43,23 @@ export default class AulasController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, avatar, whatsapp, bio, custo, materia, horarios } = req.body;
+    const {
+      nome,
+      avatar,
+      email,
+      whatsapp,
+      bio,
+      custo,
+      materia,
+      horarios,
+    } = req.body;
     const trx = await db.transaction();
 
     try {
       const [id_usuario] = await trx('usuarios').insert({
         nome,
         avatar,
+        email,
         whatsapp,
         bio,
       });

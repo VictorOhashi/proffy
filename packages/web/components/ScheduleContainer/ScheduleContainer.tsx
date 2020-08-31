@@ -6,7 +6,7 @@ import { Container, LegendButton } from './styled';
 
 type ScheduleInputProps = {
   id: number;
-  onChange: (id: number, event: EventTarget) => void;
+  onChange: (id: number, event: any) => void;
 };
 
 const ScheduleInput: React.FC<ScheduleInputProps> = memo(({ id, onChange }) => (
@@ -15,7 +15,7 @@ const ScheduleInput: React.FC<ScheduleInputProps> = memo(({ id, onChange }) => (
       name="dia_semana"
       label="Dia da semana"
       color="primaryText"
-      onChange={(e) => onChange(id, e.target)}
+      onChange={(e) => onChange(id, e)}
       options={[
         { value: 0, label: 'Domingo' },
         { value: 1, label: 'Segunda-feira' },
@@ -29,66 +29,84 @@ const ScheduleInput: React.FC<ScheduleInputProps> = memo(({ id, onChange }) => (
     <Input
       name="horario_inicio"
       label="Das"
-      onChange={(e) => onChange(id, e.target)}
+      onChange={(e) => onChange(id, e)}
       type="time"
     />
     <Input
       name="horario_fim"
       label="Até"
-      onChange={(e) => onChange(id, e.target)}
+      onChange={(e) => onChange(id, e)}
       type="time"
     />
   </Container>
 ));
 
-export const ScheduleContainer: React.FC = memo(() => {
-  const [schedules, setSchedules] = useState([
-    {
-      id: 0,
-      dia_semana: 0,
-      horario_inicio: '',
-      horario_fim: '',
-    },
-  ]);
+type ScheduleContainerProps = {
+  onChange: (
+    schedules: Array<{
+      dia_semana: number;
+      horario_inicio: string;
+      horario_fim: string;
+    }>
+  ) => void;
+};
 
-  const handleAddSchedule = useCallback(() => {
-    setSchedules((prev) => [
-      ...prev,
+export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
+  ({ onChange }) => {
+    const [schedules, setSchedules] = useState([
       {
-        id: prev.length,
         dia_semana: 0,
         horario_inicio: '',
         horario_fim: '',
       },
     ]);
-  }, []);
 
-  const handleChange = useCallback((id, { name, value }) => {
-    setSchedules((prev) =>
-      prev.map((s) => (s.id !== id ? s : { ...s, [name]: value }))
+    const handleAddSchedule = useCallback(() => {
+      setSchedules((prev) => [
+        ...prev,
+        {
+          dia_semana: 0,
+          horario_inicio: '',
+          horario_fim: '',
+        },
+      ]);
+    }, []);
+
+    const handleChange = useCallback(
+      (id, target) => {
+        let { name, value } = target;
+        setSchedules((prev) => {
+          const newSchedules = prev.map((s, i) =>
+            i !== id ? s : { ...s, [name]: value }
+          );
+          onChange(newSchedules);
+          return newSchedules;
+        });
+      },
+      [onChange]
     );
-  }, []);
 
-  return (
-    <Fieldset
-      legend={
-        <>
-          Horários disponíveis
-          <LegendButton onClick={handleAddSchedule} type="button">
-            + Novo horário
-          </LegendButton>
-        </>
-      }
-    >
-      {schedules.map(({ id }, index) => (
-        <ScheduleInput
-          key={`schedule-${index}`}
-          id={id}
-          onChange={handleChange}
-        />
-      ))}
-    </Fieldset>
-  );
-});
+    return (
+      <Fieldset
+        legend={
+          <>
+            Horários disponíveis
+            <LegendButton onClick={handleAddSchedule} type="button">
+              + Novo horário
+            </LegendButton>
+          </>
+        }
+      >
+        {schedules.map((_, index) => (
+          <ScheduleInput
+            key={`schedule-${index}`}
+            id={index}
+            onChange={handleChange}
+          />
+        ))}
+      </Fieldset>
+    );
+  }
+);
 
 export default ScheduleContainer;
