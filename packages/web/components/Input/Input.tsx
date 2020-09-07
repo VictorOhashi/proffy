@@ -16,17 +16,24 @@ export const Input: React.FC<InputProps> = memo(
   ({ name, label, color, onChange, ...rest }) => {
     const [value, setValue] = useState('');
 
+    const parseNumber = (value: string) =>
+      value === '' ? undefined : Number(value);
+
     const handleChange = useCallback(
       (event) => {
         const { value, type } = event.target;
-        let newValue = value;
+        let inputValue = value,
+          newValue = value;
+
         if (type === 'number') {
-          const number = value.replace(/\D/g, '');
-          newValue = number === '' ? undefined : Number(number);
+          inputValue = value.replace(/\D/g, '');
+          newValue = parseNumber(inputValue);
         } else if (type === 'tel') {
-          newValue = stringFormat('(##) #####-####', value.replace(/\D/g, ''));
+          newValue = parseNumber(value.replace(/\D/g, ''));
+          inputValue = stringFormat('(##) #####-####', newValue);
         }
-        setValue(newValue ?? '');
+
+        setValue(inputValue ?? '');
         onChange({ name, value: newValue });
       },
       [name]

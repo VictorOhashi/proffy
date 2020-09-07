@@ -18,6 +18,7 @@ type AulasFilter = {
 export default class AulasController {
   async index(req: Request, res: Response) {
     const { materia, horario, dia_semana } = req.query as AulasFilter;
+
     if (!dia_semana || !materia || !horario) {
       return res
         .status(400)
@@ -35,7 +36,7 @@ export default class AulasController {
           .whereRaw('`horario_aula`.`horario_inicio` <= ??', [timeInMinutes])
           .whereRaw('`horario_aula`.`horario_fim` > ??', [timeInMinutes]);
       })
-      .where('aulas.materia', '=', materia)
+      .where('aulas.materia', '=', Number(materia))
       .join('usuarios', 'aulas.id_usuario', '=', 'usuarios.id')
       .select(['aulas.*', 'usuarios.*']);
 
@@ -63,6 +64,7 @@ export default class AulasController {
         whatsapp,
         bio,
       });
+
       const [id_aula] = await trx('aulas').insert({
         id_usuario,
         custo,

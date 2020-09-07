@@ -13,6 +13,10 @@ const fadeInRightLeft = {
       duration: 0.3,
     },
   },
+  exit: {
+    x: 60,
+    opacity: 0,
+  },
 };
 
 const fadeInDownUp = {
@@ -26,6 +30,10 @@ const fadeInDownUp = {
     transition: {
       duration: 0.3,
     },
+  },
+  exit: {
+    y: -60,
+    opacity: 0,
   },
 };
 
@@ -64,7 +72,7 @@ const FadeIn: React.FC<FadeInProps> = ({
       <StyledMotionDiv
         initial="initial"
         animate="animate"
-        exit={{ opacity: 0 }}
+        exit="exit"
         variants={orientations[orientation]}
       >
         {children}

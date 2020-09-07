@@ -1,20 +1,41 @@
-import { memo } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { TextareaBlock, Label, StyledTextarea } from './styled';
-interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+
+type Props = {
   name: string;
   label: string;
   color?: Colors;
-}
+  onChange: (target: { name: string; value: string | number }) => void;
+};
+
+type TextareaProps = Props &
+  Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, keyof Props>;
 
 export const Textarea: React.FC<TextareaProps> = memo(
-  ({ name, label, color, ...rest }) => {
+  ({ name, label, color, onChange, ...rest }) => {
+    const [value, setValue] = useState('');
+
+    const handleChange = useCallback(
+      (event) => {
+        const { value } = event.target;
+        setValue(value);
+        onChange({ name, value });
+      },
+      [name]
+    );
+
     return (
       <TextareaBlock>
         <Label htmlFor={name} color={color}>
           {label}
         </Label>
-        <StyledTextarea id={name} name={name} {...rest} />
+        <StyledTextarea
+          id={name}
+          name={name}
+          value={value}
+          onChange={handleChange}
+          {...rest}
+        />
       </TextareaBlock>
     );
   }

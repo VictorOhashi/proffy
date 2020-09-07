@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { FadeIn } from '../components';
 import TeacherListContainer from '../containers/TeacherList';
 
 const TeacherList = () => {
@@ -8,7 +9,10 @@ const TeacherList = () => {
       <Head>
         <title>TeacherList</title>
       </Head>
-      <TeacherListContainer />
+
+      <FadeIn orientation="down-to-up">
+        <TeacherListContainer />
+      </FadeIn>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { FadeIn } from '../components';
 import Landing from '../containers/Landing';
 
 const Home = () => {
@@ -8,7 +9,10 @@ const Home = () => {
       <Head>
         <title>Proffy</title>
       </Head>
-      <Landing />
+
+      <FadeIn background="primary" orientation="right-to-left">
+        <Landing />
+      </FadeIn>
     </>
   );
 };

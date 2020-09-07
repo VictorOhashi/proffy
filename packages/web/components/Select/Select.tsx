@@ -14,13 +14,13 @@ type SelectProps = Props &
 
 export const Select: React.FC<SelectProps> = memo(
   ({ name, label, options, color, placeholder, onChange, ...rest }) => {
-    const [value, setValue]: any = useState('');
+    const [value, setValue] = useState<number | string>('');
 
     const handleChange = useCallback(
       (event) => {
         const { value } = event.target;
         const newValue = value === '' ? undefined : Number(value);
-        setValue(newValue ?? '');
+        setValue(newValue);
         onChange({ name, value: newValue });
       },
       [name]

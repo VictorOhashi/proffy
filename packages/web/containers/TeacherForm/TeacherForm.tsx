@@ -10,6 +10,7 @@ import {
   Textarea,
   Select,
   ScheduleContainer,
+  useToast,
 } from '../../components';
 import api from '../../services/api';
 
@@ -17,13 +18,23 @@ import { Container, Content, Footer, FooterText, SaveButton } from './styled';
 
 const FormInputs = memo(() => {
   const [formState, setFormState] = useState({});
-  console.log(formState);
+
+  const showToast = useToast();
 
   const handleFormSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(formState);
-      // api.post('aulas', formState);
+
+      api
+        .post('aulas', formState)
+        .then(() =>
+          showToast('Usuário cadastrado com sucesso', {
+            type: 'success',
+          })
+        )
+        .catch((e) => {
+          showToast(e.message, { type: 'error' });
+        });
     },
     [formState]
   );
@@ -108,17 +119,15 @@ const FormInputs = memo(() => {
 
 export const TeacherForm = () => {
   return (
-    <FadeIn orientation="down-to-up">
-      <Container>
-        <PageHeader
-          title="Que incrível que você quer dar aulas."
-          subTitle="O primeiro passo é preencher esse formulário de inscrição"
-        />
-        <Content>
-          <FormInputs />
-        </Content>
-      </Container>
-    </FadeIn>
+    <Container>
+      <PageHeader
+        title="Que incrível que você quer dar aulas."
+        subTitle="O primeiro passo é preencher esse formulário de inscrição"
+      />
+      <Content>
+        <FormInputs />
+      </Content>
+    </Container>
   );
 };
 

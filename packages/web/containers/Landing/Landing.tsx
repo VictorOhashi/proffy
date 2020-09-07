@@ -14,9 +14,8 @@ import {
   ButtonContainer,
   TotalConnections,
 } from './styled';
-import AnchorButton from './components/AnchorButton';
 
-import { FadeIn } from '../../components';
+import { FadeIn, AnchorButton } from '../../components';
 
 const Landing = () => {
   const [total, setTotal] = useState(0);
@@ -28,45 +27,43 @@ const Landing = () => {
   }, []);
 
   return (
-    <FadeIn background="primary" orientation="right-to-left">
-      <PageLanding>
-        <PageLandingContent>
-          <LogoContainer>
-            <img src={Logo} style={{ height: '10rem' }} alt="Proffy logo" />
-            <h2>Sua plataforma de estudos online.</h2>
-          </LogoContainer>
-          <img
-            src={LandingImg}
-            style={{ gridArea: 'hero', width: '100%' }}
-            alt="Proffy image"
-          />
-          <ButtonContainer>
-            <AnchorButton
-              href="/TeacherList"
-              as="/study"
-              color="primaryLighter"
-              hoverColor="primaryLight"
-            >
-              <img src={Study} alt="Imagem livro" />
-              Estudar
-            </AnchorButton>
-            <AnchorButton
-              href="/TeacherForm"
-              as="/give-classes"
-              color="secundary"
-              hoverColor="secundaryDark"
-            >
-              <img src={GiveClasses} alt="Imagem apresentação" />
-              Dar aulas
-            </AnchorButton>
-          </ButtonContainer>
-          <TotalConnections>
-            Total de {total} conexões já realizadas
-            <img src={PurpleHeart} alt="Coração" />
-          </TotalConnections>
-        </PageLandingContent>
-      </PageLanding>
-    </FadeIn>
+    <PageLanding>
+      <PageLandingContent>
+        <LogoContainer>
+          <img src={Logo} style={{ height: '10rem' }} alt="Proffy logo" />
+          <h2>Sua plataforma de estudos online.</h2>
+        </LogoContainer>
+        <img
+          src={LandingImg}
+          style={{ gridArea: 'hero', width: '100%' }}
+          alt="Proffy image"
+        />
+        <ButtonContainer>
+          <AnchorButton
+            href="/TeacherList"
+            as="/study"
+            color="primaryLighter"
+            hoverColor="primaryLight"
+          >
+            <img src={Study} alt="Imagem livro" />
+            Estudar
+          </AnchorButton>
+          <AnchorButton
+            href="/TeacherForm"
+            as="/give-classes"
+            color="secundary"
+            hoverColor="secundaryDark"
+          >
+            <img src={GiveClasses} alt="Imagem apresentação" />
+            Dar aulas
+          </AnchorButton>
+        </ButtonContainer>
+        <TotalConnections>
+          Total de {total} conexões já realizadas
+          <img src={PurpleHeart} alt="Coração" />
+        </TotalConnections>
+      </PageLandingContent>
+    </PageLanding>
   );
 };
 
