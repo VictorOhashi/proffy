@@ -1,9 +1,9 @@
-import { memo } from 'react';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState, FormEvent } from 'react';
+import { useRouter } from 'next/router';
+
 import WarningIcon from '@proffy/assets/icons/warning.svg';
 
 import {
-  FadeIn,
   Fieldset,
   PageHeader,
   Input,
@@ -18,25 +18,25 @@ import { Container, Content, Footer, FooterText, SaveButton } from './styled';
 
 const FormInputs = memo(() => {
   const [formState, setFormState] = useState({});
-
+  const router = useRouter();
   const showToast = useToast();
 
   const handleFormSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
-
       api
         .post('aulas', formState)
-        .then(() =>
+        .then(() => {
           showToast('Usuário cadastrado com sucesso', {
             type: 'success',
-          })
-        )
+          });
+          router.push('/');
+        })
         .catch((e) => {
           showToast(e.message, { type: 'error' });
         });
     },
-    [formState]
+    [formState, router]
   );
 
   const handleChange = useCallback(({ name, value }) => {
