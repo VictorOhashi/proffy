@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link, { LinkProps } from 'next/link';
 
 import styled from 'styled-components';
@@ -38,7 +39,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
 
 type AnchorButtonProps = StyledAnchorButtonProps & LinkProps;
 
-const AnchorButton: React.FC<AnchorButtonProps> = (props) => {
+const AnchorButton: React.FC<AnchorButtonProps> = memo((props) => {
   const { color, hoverColor, children, ...rest } = props;
   return (
     <Link {...rest}>
@@ -47,6 +48,6 @@ const AnchorButton: React.FC<AnchorButtonProps> = (props) => {
       </StyledAnchorButton>
     </Link>
   );
-};
+});
 
 export default AnchorButton;

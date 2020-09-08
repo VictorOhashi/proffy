@@ -10,7 +10,7 @@ export const ToastContext = createContext<any>(null);
 
 export const useToast = () => useContext<ToastContext>(ToastContext);
 
-const ToastProvider = ({ children }) => {
+const ToastProvider = memo(({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const toast = useCallback((text: string, options: ToastOptions) => {
@@ -35,6 +35,6 @@ const ToastProvider = ({ children }) => {
       </ToastContainer>
     </>
   );
-};
+});
 
-export default memo(ToastProvider);
+export default ToastProvider;

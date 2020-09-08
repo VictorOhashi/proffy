@@ -24,6 +24,7 @@ const FormInputs = memo(() => {
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
+
       api
         .post('aulas', formState)
         .then(() => {

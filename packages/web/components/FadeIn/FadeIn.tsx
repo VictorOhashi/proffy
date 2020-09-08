@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -62,23 +63,21 @@ type FadeInProps = RootDivProps & {
   orientation: 'right-to-left' | 'down-to-up';
 };
 
-const FadeIn: React.FC<FadeInProps> = ({
-  children,
-  orientation,
-  background,
-}) => {
-  return (
-    <RootDiv background={background}>
-      <StyledMotionDiv
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={orientations[orientation]}
-      >
-        {children}
-      </StyledMotionDiv>
-    </RootDiv>
-  );
-};
+const FadeIn: React.FC<FadeInProps> = memo(
+  ({ children, orientation, background }) => {
+    return (
+      <RootDiv background={background}>
+        <StyledMotionDiv
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={orientations[orientation]}
+        >
+          {children}
+        </StyledMotionDiv>
+      </RootDiv>
+    );
+  }
+);
 
 export default FadeIn;

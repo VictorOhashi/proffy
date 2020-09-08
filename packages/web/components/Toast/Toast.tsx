@@ -34,7 +34,7 @@ type ToastProps = ToastOptions & {
   onClose: (id: number) => void;
 };
 
-const Toast: React.FC<ToastProps> = (props) => {
+const Toast: React.FC<ToastProps> = memo((props) => {
   const { id, text, type, duration, onClose } = props;
 
   const [timerOn, setTimerOn] = useState(true);
@@ -89,11 +89,11 @@ const Toast: React.FC<ToastProps> = (props) => {
       </ToastItem>
     </FadeIn>
   );
-};
+});
 
 Toast.defaultProps = {
   type: 'info',
   duration: 3000,
 };
 
-export default memo(Toast);
+export default Toast;

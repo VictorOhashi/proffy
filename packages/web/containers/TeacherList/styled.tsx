@@ -55,9 +55,12 @@ export const SearchButton = styled.button`
   ${({ theme }) => theme.elevation[3]};
 
   & > svg {
-    margin-right: 1rem;
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  & > p {
+    display: none;
   }
 
   :hover {
@@ -68,7 +71,12 @@ export const SearchButton = styled.button`
   @media (max-width: 700px) {
     font-size: 1.8rem;
 
+    & > p {
+      display: initial;
+    }
+
     & > svg {
+      margin-right: 1rem;
       width: 2.2rem;
       height: 2.2rem;
     }

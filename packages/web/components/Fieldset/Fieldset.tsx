@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import styled from 'styled-components';
 
 const Legend = styled.legend`
@@ -30,11 +30,11 @@ type FieldsetProps = {
   legend: string | ReactNode;
 };
 
-const Fieldset: React.FC<FieldsetProps> = ({ legend, children }) => (
+const Fieldset: React.FC<FieldsetProps> = memo(({ legend, children }) => (
   <StyledFieldset>
     <Legend>{legend}</Legend>
     {children}
   </StyledFieldset>
-);
+));
 
 export default Fieldset;

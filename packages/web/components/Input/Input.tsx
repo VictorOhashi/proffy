@@ -12,7 +12,7 @@ type Props = {
 type InputProps = Props &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props>;
 
-export const Input: React.FC<InputProps> = memo(
+const Input: React.FC<InputProps> = memo(
   ({ name, label, color, onChange, ...rest }) => {
     const [value, setValue] = useState('');
 

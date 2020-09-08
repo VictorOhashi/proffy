@@ -60,15 +60,15 @@ const TeacherListFilter = () => {
         color="primaryText"
         onChange={handleChange}
       />
-      <SearchButton type="submit">
+      <SearchButton title="Buscar" type="submit">
         <SearchAlt />
-        Buscar
+        <p>Buscar</p>
       </SearchButton>
     </Form>
   );
 };
 
-export const TeacherList = () => {
+export const TeacherList = memo(() => {
   return (
     <FadeIn orientation="down-to-up">
       <Container>
@@ -83,6 +83,6 @@ export const TeacherList = () => {
       </Container>
     </FadeIn>
   );
-};
+});
 
-export default memo(TeacherList);
+export default TeacherList;
