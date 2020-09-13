@@ -7,16 +7,19 @@ import {
   TeacherItem,
   Input,
   Select,
+  useToast,
 } from '../../components';
 import { Container, Form, MainContent, SearchButton } from './styled';
+import api from '../../services/api';
+import { useEffect } from 'react';
 
-const TeacherListFilter = () => {
+const TeacherListFilter = ({ onSubmit }) => {
   const [formState, setFormState] = useState({});
 
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
-      console.log(formState);
+      onSubmit(formState);
     },
     [formState]
   );
@@ -47,14 +50,14 @@ const TeacherListFilter = () => {
           { value: 0, label: 'Domingo' },
           { value: 1, label: 'Segunda-feira' },
           { value: 2, label: 'Terça-feira' },
-          { value: 2, label: 'Quarta-feira' },
-          { value: 2, label: 'Quinta-feira' },
-          { value: 2, label: 'Sexta-feira' },
-          { value: 2, label: 'Sábado' },
+          { value: 3, label: 'Quarta-feira' },
+          { value: 4, label: 'Quinta-feira' },
+          { value: 5, label: 'Sexta-feira' },
+          { value: 6, label: 'Sábado' },
         ]}
       />
       <Input
-        name="time"
+        name="horario"
         label="Hora"
         type="time"
         color="primaryText"
@@ -69,16 +72,33 @@ const TeacherListFilter = () => {
 };
 
 export const TeacherList = memo(() => {
+  const [aulas, setAulas] = useState([]);
+  const [params, setParams] = useState();
+  const showToast = useToast();
+
+  useEffect(() => {
+    api
+      .get('aulas', {
+        params,
+      })
+      .then(({ data }) => setAulas(data))
+      .catch((e) => showToast(e.message, { type: 'error' }));
+  }, [params]);
+
+  const handleSubmit = useCallback((params) => {
+    setParams(params);
+  }, []);
+
   return (
     <FadeIn orientation="down-to-up">
       <Container>
         <PageHeader title="Estes são os proffys disponíveis">
-          <TeacherListFilter />
+          <TeacherListFilter onSubmit={handleSubmit} />
         </PageHeader>
         <MainContent>
-          <TeacherItem />
-          <TeacherItem />
-          <TeacherItem />
+          {aulas.length > 0
+            ? aulas.map((aula) => <TeacherItem key={aula.id} aula={aula} />)
+            : 'null'}
         </MainContent>
       </Container>
     </FadeIn>

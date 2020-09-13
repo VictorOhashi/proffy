@@ -32,9 +32,13 @@ export const AnchorButton = styled.a`
   height: 3.2rem;
   transition: opacity 0.2s;
   cursor: pointer;
+  outline: 0;
+  transition: transform 0.15s linear;
 
-  :hover {
+  :hover,
+  :focus {
     opacity: 0.6;
+    transform: scale(1.1);
   }
 `;
 

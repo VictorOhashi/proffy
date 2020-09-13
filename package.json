@@ -2,7 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "transpile": "lerna run transpile"
+    "transpile": "lerna run transpile",
+    "start:server": "cd ./packages/server && yarn dev",
+    "start:web": "cd ./packages/web && yarn dev"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

@@ -1,11 +1,23 @@
-import { memo, useState, useCallback } from 'react';
-import { SelectBlock, Label, StyledSelect } from './styled';
+import React, { memo, useState, useCallback, useRef, useEffect } from 'react';
+
+import { SelectBlock, Label, InputContainer, SelectInput } from './styled';
+import SelectButton from './components/SelectButton';
+import SelectOptions from './components/SelectOptions';
+import {
+  CloseOutline,
+  ArrowIosDownwardOutline,
+} from '@styled-icons/evaicons-outline';
+
+export type OptionType = {
+  label?: string;
+  value?: string | number;
+};
 
 type Props = {
   name: string;
   label: string;
   color?: Colors;
-  options?: Array<{ value: string | number; label: string }>;
+  options?: Array<OptionType>;
   onChange: (target: { name: string; value: string | number }) => void;
 };
 
@@ -13,45 +25,76 @@ type SelectProps = Props &
   Omit<React.InputHTMLAttributes<HTMLSelectElement>, keyof Props>;
 
 export const Select: React.FC<SelectProps> = memo(
-  ({ name, label, options, color, placeholder, onChange, ...rest }) => {
-    const [value, setValue] = useState<number | string>('');
+  ({ name, label, options, color, placeholder, onChange }) => {
+    const [selectedValue, setSelectedValue] = useState<OptionType>({});
+    const [inputValue, setInputValue] = useState<number | string>(null);
+    const [expand, setExpand] = useState(false);
 
-    const handleChange = useCallback(
-      (event) => {
-        const { value } = event.target;
-        const newValue = value === '' ? undefined : Number(value);
-        setValue(newValue);
-        onChange({ name, value: newValue });
+    const handleClickOption = useCallback(
+      (option = {}) => {
+        const { value, label } = option;
+        setInputValue(null);
+        setSelectedValue({ label: label || '', value: label && String(value) });
+        onChange({ name, value });
+        setExpand(false);
       },
       [name]
     );
 
+    useEffect(() => {
+      if (!expand && inputValue !== null) {
+        setInputValue(null);
+      }
+    }, [expand]);
+
+    const handleInputChange = useCallback((e) => {
+      const { value } = e.target;
+      setInputValue(value);
+    }, []);
+
+    const selectRef = useRef();
+    const value = inputValue !== null ? inputValue : selectedValue.label;
+
     return (
-      <SelectBlock>
+      <SelectBlock ref={selectRef}>
         <Label htmlFor={name} color={color}>
           {label}
         </Label>
-        <StyledSelect
-          id={name}
-          name={name}
-          value={value}
-          onChange={handleChange}
-          {...rest}
-        >
-          <option value="" disabled hidden>
-            {placeholder}
-          </option>
 
-          {options.length === 0 && (
-            <option disabled>Não há opções disponíveis</option>
+        <InputContainer>
+          <SelectInput
+            id={name}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onClick={() => setExpand(true)}
+            onChange={handleInputChange}
+            spellCheck={false}
+            autoComplete="off"
+          />
+          {value && (
+            <SelectButton onClick={() => handleClickOption()} title="Limpar">
+              <CloseOutline />
+            </SelectButton>
           )}
+          <SelectButton
+            aria-expanded={expand}
+            onClick={() => setExpand((e) => !e)}
+            title="Mostrar opções"
+          >
+            <ArrowIosDownwardOutline />
+          </SelectButton>
+        </InputContainer>
 
-          {options.map(({ value, label }) => (
-            <option key={`${label}-${value}`} value={value}>
-              {label}
-            </option>
-          ))}
-        </StyledSelect>
+        {expand && (
+          <SelectOptions
+            selectRef={selectRef}
+            options={options}
+            onClick={handleClickOption}
+            selectedValue={selectedValue.value}
+            setExpand={setExpand}
+          />
+        )}
       </SelectBlock>
     );
   }

@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import Link, { LinkProps } from 'next/link';
+import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
+import { useCallback } from 'react';
 
 type StyledAnchorButtonProps = {
   color: Colors;
@@ -12,6 +13,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
   width: 30rem;
   height: 10.4rem;
   border-radius: 0.8rem;
+  outline: 0;
   font: 700 2rem Archivo;
   display: flex;
   align-items: center;
@@ -26,7 +28,8 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
     margin-right: 1.6rem;
   }
 
-  :hover {
+  :hover,
+  :focus {
     background-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
     ${({ theme }) => theme.elevation[0]};
   }
@@ -37,16 +40,39 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
   }
 `;
 
-type AnchorButtonProps = StyledAnchorButtonProps & LinkProps;
+type AnchorButtonProps = StyledAnchorButtonProps & {
+  href: string;
+  as: string;
+};
 
 const AnchorButton: React.FC<AnchorButtonProps> = memo((props) => {
-  const { color, hoverColor, children, ...rest } = props;
+  const { color, hoverColor, children, href, as } = props;
+
+  const router = useRouter();
+
+  const handleRoute = useCallback(() => {
+    router.push(href, as);
+  }, [router, href, as]);
+
+  const handleKeydown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        handleRoute();
+      }
+    },
+    [handleRoute]
+  );
+
   return (
-    <Link {...rest}>
-      <StyledAnchorButton color={color} hoverColor={hoverColor}>
-        {children}
-      </StyledAnchorButton>
-    </Link>
+    <StyledAnchorButton
+      tabIndex={0}
+      color={color}
+      hoverColor={hoverColor}
+      onClick={handleRoute}
+      onKeyDown={handleKeydown}
+    >
+      {children}
+    </StyledAnchorButton>
   );
 });
 

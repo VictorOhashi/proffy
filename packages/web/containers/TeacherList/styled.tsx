@@ -11,12 +11,22 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
+  display: grid;
   margin-top: 1.8rem;
+  column-gap: 1rem;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+    & :first-child {
+      grid-column: 1 / -1;
+    }
+    & :nth-child(2) {
+      grid-column: 1 / -1;
+    }
+  }
 
   @media (min-width: 700px) {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr 1fr;
-    column-gap: 16px;
+    grid-template-columns: 2fr 2fr 1fr auto;
     position: absolute;
     bottom: -28px;
 
@@ -38,12 +48,13 @@ export const MainContent = styled.main`
 `;
 
 export const SearchButton = styled.button`
-  width: 100%;
+  width: 5.6rem;
   height: 5.6rem;
   background: ${({ theme }) => theme.colors.secundary};
   color: ${({ theme }) => theme.colors.buttonText};
+  outline: 0;
   border: 0;
-  border-radius: 0.8rem;
+  border-radius: 50%;
   cursor: pointer;
   font: 700 1.6rem Archivo;
   display: flex;
@@ -52,6 +63,7 @@ export const SearchButton = styled.button`
   text-decoration: none;
   transition: 0.2s;
   margin-top: 3.2rem;
+
   ${({ theme }) => theme.elevation[3]};
 
   & > svg {
@@ -63,13 +75,17 @@ export const SearchButton = styled.button`
     display: none;
   }
 
-  :hover {
+  :hover,
+  :focus {
     background: ${({ theme }) => theme.colors.secundaryDark};
     ${({ theme }) => theme.elevation[0]};
   }
 
   @media (max-width: 700px) {
+    width: 100%;
+    border-radius: 0.8rem;
     font-size: 1.8rem;
+    margin-top: 4.6rem;
 
     & > p {
       display: initial;

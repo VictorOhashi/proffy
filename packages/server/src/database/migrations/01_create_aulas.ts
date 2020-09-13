@@ -4,7 +4,7 @@ export async function up(knex: Knex) {
   return knex.schema.createTable('aulas', (table) => {
     table.increments('id').primary();
     table.decimal('materia').notNullable();
-    table.decimal('custo').notNullable();
+    table.integer('custo').notNullable();
     table
       .integer('id_usuario')
       .notNullable()

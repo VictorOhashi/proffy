@@ -80,22 +80,24 @@ export const TeacherFooter = styled.footer`
   }
 `;
 
-export const ContactButton = styled.button`
+export const ContactButton = styled.a`
   width: 20rem;
   height: 5.6rem;
   background-color: ${({ theme }) => theme.colors.secundary};
   color: ${({ theme }) => theme.colors.buttonText};
-  border: 0;
+  outline: 0;
   border-radius: 0.8rem;
   cursor: pointer;
   font: 700 1.4rem Archivo;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   transition: 0.2s;
   ${({ theme }) => theme.elevation[3]};
 
-  :hover {
+  :hover,
+  :focus {
     background: ${({ theme }) => theme.colors.secundaryDark};
     ${({ theme }) => theme.elevation[0]};
   }

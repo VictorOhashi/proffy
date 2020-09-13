@@ -19,12 +19,6 @@ export default class AulasController {
   async index(req: Request, res: Response) {
     const { materia, horario, dia_semana } = req.query as AulasFilter;
 
-    if (!dia_semana || !materia || !horario) {
-      return res
-        .status(400)
-        .json({ message: 'Filtros ausentes para pesquisar aulas' });
-    }
-
     const timeInMinutes = convertHoursToMinutes(horario);
 
     const aulas = await db('aulas')
@@ -32,11 +26,27 @@ export default class AulasController {
         this.select('horario_aula.*')
           .from('horario_aula')
           .whereRaw('`horario_aula`.`id_aula` = `aulas`.`id`')
-          .whereRaw('`horario_aula`.`dia_semana` = ??', [Number(dia_semana)])
-          .whereRaw('`horario_aula`.`horario_inicio` <= ??', [timeInMinutes])
-          .whereRaw('`horario_aula`.`horario_fim` > ??', [timeInMinutes]);
+          .modify((query) => {
+            if (dia_semana) {
+              query.whereRaw('`horario_aula`.`dia_semana` = ??', [
+                Number(dia_semana),
+              ]);
+            }
+
+            if (timeInMinutes) {
+              query
+                .whereRaw('`horario_aula`.`horario_inicio` <= ??', [
+                  timeInMinutes,
+                ])
+                .whereRaw('`horario_aula`.`horario_fim` > ??', [timeInMinutes]);
+            }
+          });
       })
-      .where('aulas.materia', '=', Number(materia))
+      .modify((query) => {
+        if (materia) {
+          query.where('aulas.materia', '=', [Number(materia)]);
+        }
+      })
       .join('usuarios', 'aulas.id_usuario', '=', 'usuarios.id')
       .select(['aulas.*', 'usuarios.*']);
 

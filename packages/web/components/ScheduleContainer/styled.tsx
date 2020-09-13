@@ -2,17 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 1.6rem;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  column-gap: 1rem;
 
-  & :first-child {
-    grid-column: 1 / -1;
-  }
-
-  @media (min-width: 700px) {
-    grid-template-columns: 2fr repeat(2, 1fr);
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
     & :first-child {
-      grid-column: initial;
+      grid-column: 1 / -1;
     }
   }
 `;

@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import WhatsappIcon from '@proffy/assets/icons/whatsapp.svg';
 
 import {
@@ -6,43 +7,56 @@ import {
   TeacherFooter,
   ContactButton,
 } from './styled';
+import api from '../../services/api';
 
-export const TeacherItem = () => (
-  <ContainerItem>
-    <TeacherHeader>
-      <img
-        alt="Nome professor"
-        src="https://avatars1.githubusercontent.com/u/38299943?s=460&u=ff0f073baad13b512c536dfa9f7a5cd7c8863c36&v=4"
-      />
-      <div>
-        <strong>Nome professor</strong>
-        <span>Química</span>
-      </div>
-    </TeacherHeader>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged.
-    </p>
-    <p>
-      It was popularised in the 1960s with the release of Letraset sheets
-      containing Lorem Ipsum passages, and more recently with desktop publishing
-      software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
-    <TeacherFooter>
-      <p>
-        Preço/Hora
-        <strong>R$ 80,00</strong>
-      </p>
-      <ContactButton type="button">
-        <img src={WhatsappIcon} alt="Whatsapp" />
-        Entrar em contato
-      </ContactButton>
-    </TeacherFooter>
-  </ContainerItem>
-);
+type TeacherItemProps = {
+  aula: {
+    id: number;
+    materia: number;
+    custo: number;
+    nome: string;
+    email: string;
+    avatar: string;
+    whatsapp: number;
+    bio: string;
+  };
+};
+
+export const TeacherItem: React.FC<TeacherItemProps> = memo(({ aula }) => {
+  const { id, nome, materia, avatar, bio, custo, whatsapp } = aula;
+
+  const handleClickContact = useCallback(() => {
+    api.post('/conexoes', {
+      id_usuario: id,
+    });
+  }, []);
+
+  return (
+    <ContainerItem>
+      <TeacherHeader>
+        <img alt="Nome professor" src={avatar} />
+        <div>
+          <strong>{nome}</strong>
+          <span>{materia}</span>
+        </div>
+      </TeacherHeader>
+      <p>{bio}</p>
+      <TeacherFooter>
+        <p>
+          Preço/Hora:
+          <strong>R$ {custo}</strong>
+        </p>
+        <ContactButton
+          href={`https://wa.me/55${whatsapp}?text=Encontrei seu perfil no proffy e gostaria de ter aulas com você!`}
+          target="_blank"
+          onClick={handleClickContact}
+        >
+          <img src={WhatsappIcon} alt="Whatsapp" />
+          Entrar em contato
+        </ContactButton>
+      </TeacherFooter>
+    </ContainerItem>
+  );
+});
 
 export default TeacherItem;
