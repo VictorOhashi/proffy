@@ -1,5 +1,13 @@
-import React, { memo, useState, useCallback, useRef, useEffect } from 'react';
+import React, {
+  memo,
+  useMemo,
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+} from 'react';
 
+import matchText from '../../utils/matchText';
 import { SelectBlock, Label, InputContainer, SelectInput } from './styled';
 import SelectButton from './components/SelectButton';
 import SelectOptions from './components/SelectOptions';
@@ -27,7 +35,7 @@ type SelectProps = Props &
 export const Select: React.FC<SelectProps> = memo(
   ({ name, label, options, color, placeholder, onChange }) => {
     const [selectedValue, setSelectedValue] = useState<OptionType>({});
-    const [inputValue, setInputValue] = useState<number | string>(null);
+    const [inputValue, setInputValue] = useState<string>(null);
     const [expand, setExpand] = useState(false);
 
     const handleClickOption = useCallback(
@@ -54,6 +62,14 @@ export const Select: React.FC<SelectProps> = memo(
 
     const selectRef = useRef();
     const value = inputValue !== null ? inputValue : selectedValue.label;
+
+    const filteredOptions = useMemo(
+      () =>
+        inputValue
+          ? options.filter((o) => matchText(o.label, inputValue))
+          : options,
+      [options, inputValue]
+    );
 
     return (
       <SelectBlock ref={selectRef}>
@@ -89,7 +105,7 @@ export const Select: React.FC<SelectProps> = memo(
         {expand && (
           <SelectOptions
             selectRef={selectRef}
-            options={options}
+            options={filteredOptions}
             onClick={handleClickOption}
             selectedValue={selectedValue.value}
             setExpand={setExpand}
