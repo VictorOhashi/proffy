@@ -1,4 +1,4 @@
-import { memo, useCallback, useState, FormEvent } from 'react';
+import { memo, useCallback, useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 
 import WarningIcon from '@proffy/assets/icons/warning.svg';
@@ -18,8 +18,18 @@ import { Container, Content, Footer, FooterText, SaveButton } from './styled';
 
 const FormInputs = memo(() => {
   const [formState, setFormState] = useState({});
+  const [materias, setMaterias] = useState([]);
   const router = useRouter();
   const showToast = useToast();
+
+  useEffect(() => {
+    api
+      .get('materias')
+      .then(({ data }) =>
+        setMaterias(data.map((d) => ({ value: d.id, label: d.materia })))
+      )
+      .catch((e) => showToast(e.message, { type: 'error' }));
+  }, []);
 
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
@@ -89,11 +99,7 @@ const FormInputs = memo(() => {
           name="materia"
           label="Matéria"
           onChange={handleChange}
-          options={[
-            { value: 1, label: 'Quimica' },
-            { value: 2, label: 'Biologia' },
-            { value: 3, label: 'Física' },
-          ]}
+          options={materias}
         />
 
         <Input

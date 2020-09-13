@@ -15,6 +15,17 @@ import { useEffect } from 'react';
 
 const TeacherListFilter = ({ onSubmit }) => {
   const [formState, setFormState] = useState({});
+  const [materias, setMaterias] = useState([]);
+  const showToast = useToast();
+
+  useEffect(() => {
+    api
+      .get('materias')
+      .then(({ data }) =>
+        setMaterias(data.map((d) => ({ value: d.id, label: d.materia })))
+      )
+      .catch((e) => showToast(e.message, { type: 'error' }));
+  }, []);
 
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
@@ -35,11 +46,7 @@ const TeacherListFilter = ({ onSubmit }) => {
         label="Máteria"
         color="primaryText"
         onChange={handleChange}
-        options={[
-          { value: 1, label: 'Quimica' },
-          { value: 2, label: 'Biologia' },
-          { value: 3, label: 'Física' },
-        ]}
+        options={materias}
       />
       <Select
         name="dia_semana"

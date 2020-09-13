@@ -44,11 +44,12 @@ export default class AulasController {
       })
       .modify((query) => {
         if (materia) {
-          query.where('aulas.materia', '=', [Number(materia)]);
+          query.where('aulas.id_materia', '=', [Number(materia)]);
         }
       })
+      .join('materias', 'aulas.id_materia', 'materias.id')
       .join('usuarios', 'aulas.id_usuario', '=', 'usuarios.id')
-      .select(['aulas.*', 'usuarios.*']);
+      .select(['aulas.id', 'aulas.custo', 'usuarios.*', 'materias.*']);
 
     return res.json(aulas);
   }
@@ -78,7 +79,7 @@ export default class AulasController {
       const [id_aula] = await trx('aulas').insert({
         id_usuario,
         custo,
-        materia,
+        id_materia: materia,
       });
 
       const horarioAula = horarios.map((horario: Horario) => {

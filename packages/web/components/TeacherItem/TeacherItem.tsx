@@ -12,7 +12,7 @@ import api from '../../services/api';
 type TeacherItemProps = {
   aula: {
     id: number;
-    materia: number;
+    materia: string;
     custo: number;
     nome: string;
     email: string;
