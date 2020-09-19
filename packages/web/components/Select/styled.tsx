@@ -17,15 +17,6 @@ export const SelectBlock = styled.div`
   }
 `;
 
-type LabelProps = {
-  color: Colors;
-};
-
-export const Label = styled.label<LabelProps>`
-  color: ${({ theme, color }) => theme.colors[color]};
-  font-size: 1.4rem;
-`;
-
 export const InputContainer = styled.div`
   width: 100%;
   display: flex;

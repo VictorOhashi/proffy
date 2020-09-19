@@ -1,8 +1,9 @@
 import { memo, useState, useCallback } from 'react';
-import { TextareaBlock, Label, StyledTextarea } from './styled';
+
+import Label from '../Label';
+import { TextareaBlock, StyledTextarea } from './styled';
 
 type Props = {
-  name: string;
   label: string;
   color?: Colors;
   onChange: (target: { name: string; value: string | number }) => void;
@@ -12,7 +13,7 @@ type TextareaProps = Props &
   Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, keyof Props>;
 
 export const Textarea: React.FC<TextareaProps> = memo(
-  ({ name, label, color, onChange, ...rest }) => {
+  ({ name, label, color, onChange, required, ...rest }) => {
     const [value, setValue] = useState('');
 
     const handleChange = useCallback(
@@ -26,7 +27,7 @@ export const Textarea: React.FC<TextareaProps> = memo(
 
     return (
       <TextareaBlock>
-        <Label htmlFor={name} color={color}>
+        <Label htmlFor={name} color={color} required={required}>
           {label}
         </Label>
         <StyledTextarea
@@ -34,6 +35,7 @@ export const Textarea: React.FC<TextareaProps> = memo(
           name={name}
           value={value}
           onChange={handleChange}
+          required={required}
           {...rest}
         />
       </TextareaBlock>

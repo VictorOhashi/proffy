@@ -17,15 +17,6 @@ export const InputBlock = styled.div`
   }
 `;
 
-type LabelProps = {
-  color: Colors;
-};
-
-export const Label = styled.label<LabelProps>`
-  color: ${({ theme, color }) => theme.colors[color]};
-  font-size: 1.4rem;
-`;
-
 export const StyledInput = styled.input`
   width: 100%;
   height: 5.6rem;

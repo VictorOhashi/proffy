@@ -1,9 +1,10 @@
 import { memo, useState, useCallback } from 'react';
-import { InputBlock, Label, StyledInput } from './styled';
+
+import Label from '../Label';
+import { InputBlock, StyledInput } from './styled';
 import stringFormat from '../../utils/stringFormat';
 
 type Props = {
-  name: string;
   label: string;
   color?: Colors;
   onChange: (target: { name: string; value: string | number }) => void;
@@ -13,7 +14,7 @@ type InputProps = Props &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props>;
 
 const Input: React.FC<InputProps> = memo(
-  ({ name, label, color, onChange, ...rest }) => {
+  ({ label, color, onChange, name, required, ...rest }) => {
     const [value, setValue] = useState('');
 
     const parseNumber = (value: string) =>
@@ -41,7 +42,7 @@ const Input: React.FC<InputProps> = memo(
 
     return (
       <InputBlock>
-        <Label htmlFor={name} color={color}>
+        <Label htmlFor={name} color={color} required={required}>
           {label}
         </Label>
         <StyledInput
@@ -49,6 +50,7 @@ const Input: React.FC<InputProps> = memo(
           name={name}
           value={value}
           onChange={handleChange}
+          required={required}
           {...rest}
         />
       </InputBlock>

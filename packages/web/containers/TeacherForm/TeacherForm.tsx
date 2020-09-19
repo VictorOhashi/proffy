@@ -33,6 +33,7 @@ const FormInputs = memo(() => {
 
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
+      console.log(e);
       e.preventDefault();
 
       api
@@ -65,6 +66,7 @@ const FormInputs = memo(() => {
           name="nome"
           label="Nome completo"
           autoComplete="cc-name"
+          required
           onChange={handleChange}
         />
 
@@ -73,6 +75,7 @@ const FormInputs = memo(() => {
           label="Email"
           type="email"
           autoComplete="email"
+          required
           onChange={handleChange}
         />
 
@@ -80,6 +83,7 @@ const FormInputs = memo(() => {
           name="avatar"
           type="url"
           label="Avatar"
+          required
           onChange={handleChange}
         />
 
@@ -89,6 +93,7 @@ const FormInputs = memo(() => {
           type="tel"
           autoComplete="tel"
           placeholder="(00) 00000-0000"
+          required
           onChange={handleChange}
         />
 
@@ -98,6 +103,7 @@ const FormInputs = memo(() => {
         <Select
           name="materia"
           label="Matéria"
+          required
           onChange={handleChange}
           options={materias}
         />
@@ -107,6 +113,7 @@ const FormInputs = memo(() => {
           label="Custo da sua hora por aula"
           type="number"
           inputMode="numeric"
+          required
           onChange={handleChange}
         />
       </Fieldset>

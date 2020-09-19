@@ -7,33 +7,34 @@ import React, {
   useEffect,
 } from 'react';
 
-import matchText from '../../utils/matchText';
-import { SelectBlock, Label, InputContainer, SelectInput } from './styled';
-import SelectButton from './components/SelectButton';
-import SelectOptions from './components/SelectOptions';
 import {
   CloseOutline,
   ArrowIosDownwardOutline,
 } from '@styled-icons/evaicons-outline';
+
+import Label from '../Label';
+import { SelectBlock, InputContainer, SelectInput } from './styled';
+import matchText from '../../utils/matchText';
+import SelectButton from './components/SelectButton';
+import SelectOptions from './components/SelectOptions';
 
 export type OptionType = {
   label?: string;
   value?: string | number;
 };
 
-type Props = {
+type SelectProps = {
   name: string;
   label: string;
+  placeholder?: string;
   color?: Colors;
   options?: Array<OptionType>;
+  required?: boolean;
   onChange: (target: { name: string; value: string | number }) => void;
 };
 
-type SelectProps = Props &
-  Omit<React.InputHTMLAttributes<HTMLSelectElement>, keyof Props>;
-
 export const Select: React.FC<SelectProps> = memo(
-  ({ name, label, options, color, placeholder, onChange }) => {
+  ({ name, label, options, color, placeholder, onChange, required }) => {
     const [selectedValue, setSelectedValue] = useState<OptionType>({});
     const [inputValue, setInputValue] = useState<string>(null);
     const [expand, setExpand] = useState(false);
@@ -60,6 +61,10 @@ export const Select: React.FC<SelectProps> = memo(
       setInputValue(value);
     }, []);
 
+    const handleKeyDown = useCallback((e) => {
+      e.preventDefault();
+    }, []);
+
     const selectRef = useRef();
     const value = inputValue !== null ? inputValue : selectedValue.label;
 
@@ -73,7 +78,7 @@ export const Select: React.FC<SelectProps> = memo(
 
     return (
       <SelectBlock ref={selectRef}>
-        <Label htmlFor={name} color={color}>
+        <Label htmlFor={name} color={color} required={required}>
           {label}
         </Label>
 
@@ -85,8 +90,10 @@ export const Select: React.FC<SelectProps> = memo(
             value={value}
             onClick={() => setExpand(true)}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             spellCheck={false}
             autoComplete="off"
+            required={required}
           />
           {value && (
             <SelectButton onClick={() => handleClickOption()} title="Limpar">

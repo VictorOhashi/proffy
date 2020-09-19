@@ -17,15 +17,6 @@ export const TextareaBlock = styled.div`
   }
 `;
 
-type LabelProps = {
-  color: Colors;
-};
-
-export const Label = styled.label<LabelProps>`
-  color: ${({ theme, color }) => theme.colors[color]};
-  font-size: 1.4rem;
-`;
-
 export const StyledTextarea = styled.textarea`
   width: 100%;
   height: 16rem;
