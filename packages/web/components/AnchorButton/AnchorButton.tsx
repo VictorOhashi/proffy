@@ -23,6 +23,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
   background-color: ${({ theme, color }) => theme.colors[color]};
   transition: background-color 0.2s;
   ${({ theme }) => theme.elevation[3]};
+  cursor: pointer;
 
   :first-child {
     margin-right: 1.6rem;

@@ -1,15 +1,12 @@
 import { useCallback, useEffect } from 'react';
 
-type ClickAway = (
-  handleClickAway: (clickedAway: boolean) => void,
-  ref: any
-) => void;
+type ClickAway = (handleClickAway: () => void, ref: any) => void;
 
 const useClickAway: ClickAway = (handleClickAway, ref) => {
   const handleClick = useCallback(
     (e) => {
       if (!ref.current?.contains(e.target)) {
-        handleClickAway(false);
+        handleClickAway();
       }
     },
     [handleClickAway]

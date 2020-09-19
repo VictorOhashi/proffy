@@ -14,7 +14,10 @@ import {
 
 import Label from '../Label';
 import { SelectBlock, InputContainer, SelectInput } from './styled';
+
+import useClickAway from '../../hooks/useClickAway';
 import matchText from '../../utils/matchText';
+
 import SelectButton from './components/SelectButton';
 import SelectOptions from './components/SelectOptions';
 
@@ -25,7 +28,8 @@ export type OptionType = {
 
 type SelectProps = {
   name: string;
-  label: string;
+  label?: string;
+  initialValue?: string | number;
   placeholder?: string;
   color?: Colors;
   options?: Array<OptionType>;
@@ -34,10 +38,31 @@ type SelectProps = {
 };
 
 export const Select: React.FC<SelectProps> = memo(
-  ({ name, label, options, color, placeholder, onChange, required }) => {
-    const [selectedValue, setSelectedValue] = useState<OptionType>({});
+  ({
+    name,
+    initialValue,
+    label,
+    options,
+    color,
+    placeholder,
+    onChange,
+    required,
+  }) => {
+    const selectRef = useRef();
+    const [selectedValue, setSelectedValue] = useState<OptionType>({
+      label: '',
+      value: null,
+    });
     const [inputValue, setInputValue] = useState<string>(null);
     const [expand, setExpand] = useState(false);
+    useClickAway(() => setInputValue(null), selectRef);
+
+    useEffect(() => {
+      if (initialValue !== undefined && selectedValue.value === null) {
+        const initial = options.find((option) => option.value === initialValue);
+        initial && setSelectedValue(initial);
+      }
+    }, [options]);
 
     const handleClickOption = useCallback(
       (option = {}) => {
@@ -50,22 +75,17 @@ export const Select: React.FC<SelectProps> = memo(
       [name]
     );
 
-    useEffect(() => {
-      if (!expand && inputValue !== null) {
-        setInputValue(null);
-      }
-    }, [expand]);
-
     const handleInputChange = useCallback((e) => {
       const { value } = e.target;
       setInputValue(value);
     }, []);
 
     const handleKeyDown = useCallback((e) => {
-      e.preventDefault();
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
     }, []);
 
-    const selectRef = useRef();
     const value = inputValue !== null ? inputValue : selectedValue.label;
 
     const filteredOptions = useMemo(
@@ -126,7 +146,6 @@ export const Select: React.FC<SelectProps> = memo(
 Select.defaultProps = {
   color: 'complementText',
   placeholder: 'Selecione uma opção',
-  defaultValue: '',
   options: [],
 };
 

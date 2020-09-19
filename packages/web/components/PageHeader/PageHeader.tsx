@@ -27,7 +27,6 @@ export const PageHeader: React.FC<PageHeaderProps> = memo(
 
     const handleKeydown = useCallback(
       (e) => {
-        console.log(e.key);
         if (e.key === 'Enter') {
           handleRoute();
         }

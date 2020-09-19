@@ -33,7 +33,6 @@ const FormInputs = memo(() => {
 
   const handleFormSubmit = useCallback(
     (e: FormEvent) => {
-      console.log(e);
       e.preventDefault();
 
       api
@@ -97,7 +96,12 @@ const FormInputs = memo(() => {
           onChange={handleChange}
         />
 
-        <Textarea name="bio" label="Biografia" onChange={handleChange} />
+        <Textarea
+          name="bio"
+          label="Biografia"
+          onChange={handleChange}
+          required
+        />
       </Fieldset>
       <Fieldset legend="Sobre a aula">
         <Select

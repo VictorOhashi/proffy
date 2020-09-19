@@ -80,7 +80,7 @@ type SelectOptions = {
 export const SelectOptions: React.FC<SelectOptions> = memo(
   ({ selectRef, options, onClick, selectedValue, setExpand }) => {
     const [refs, setRefs] = useState([]);
-    useClickAway(setExpand, selectRef);
+    useClickAway(() => setExpand(false), selectRef);
 
     useEffect(() => {
       const handleKey = (e) => {

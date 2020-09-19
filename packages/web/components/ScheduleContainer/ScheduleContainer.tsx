@@ -1,61 +1,24 @@
 import React, { memo, useState, useCallback } from 'react';
 
-import { Input, Select, Fieldset } from '..';
+import { Fieldset } from '..';
+import ScheduleInput from './components/ScheduleInput';
+import { LegendButton } from './styled';
 
-import { Container, LegendButton } from './styled';
-
-type ScheduleInputProps = {
-  id: number;
-  onChange: (id: number, event: any) => void;
+export type Schedule = {
+  dia_semana: number;
+  horario_inicio: string;
+  horario_fim: string;
 };
 
-const ScheduleInput: React.FC<ScheduleInputProps> = memo(({ id, onChange }) => (
-  <Container>
-    <Select
-      name="dia_semana"
-      label="Dia da semana"
-      color="primaryText"
-      onChange={(e) => onChange(id, e)}
-      options={[
-        { value: 0, label: 'Domingo' },
-        { value: 1, label: 'Segunda-feira' },
-        { value: 2, label: 'Terça-feira' },
-        { value: 3, label: 'Quarta-feira' },
-        { value: 4, label: 'Quinta-feira' },
-        { value: 5, label: 'Sexta-feira' },
-        { value: 6, label: 'Sábado' },
-      ]}
-    />
-    <Input
-      name="horario_inicio"
-      label="Das"
-      onChange={(e) => onChange(id, e)}
-      type="time"
-    />
-    <Input
-      name="horario_fim"
-      label="Até"
-      onChange={(e) => onChange(id, e)}
-      type="time"
-    />
-  </Container>
-));
-
 type ScheduleContainerProps = {
-  onChange: (
-    schedules: Array<{
-      dia_semana: number;
-      horario_inicio: string;
-      horario_fim: string;
-    }>
-  ) => void;
+  onChange: (schedules: Array<Schedule>) => void;
 };
 
 export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
   ({ onChange }) => {
     const [schedules, setSchedules] = useState([
       {
-        dia_semana: 0,
+        dia_semana: null,
         horario_inicio: '',
         horario_fim: '',
       },
@@ -65,7 +28,7 @@ export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
       setSchedules((prev) => [
         ...prev,
         {
-          dia_semana: 0,
+          dia_semana: null,
           horario_inicio: '',
           horario_fim: '',
         },
@@ -86,6 +49,10 @@ export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
       [onChange]
     );
 
+    const handleDelete = useCallback((id) => {
+      setSchedules((prev) => prev.filter((_, i) => i !== id));
+    }, []);
+
     return (
       <Fieldset
         legend={
@@ -97,11 +64,13 @@ export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
           </>
         }
       >
-        {schedules.map((_, index) => (
+        {schedules.map((s, index) => (
           <ScheduleInput
-            key={`schedule-${index}`}
+            key={`${s.dia_semana}-${index}`}
             id={index}
+            schedule={s}
             onChange={handleChange}
+            onDelete={handleDelete}
           />
         ))}
       </Fieldset>

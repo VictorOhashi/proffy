@@ -7,6 +7,7 @@ import stringFormat from '../../utils/stringFormat';
 type Props = {
   label: string;
   color?: Colors;
+  initialValue?: string | number;
   onChange: (target: { name: string; value: string | number }) => void;
 };
 
@@ -14,8 +15,8 @@ type InputProps = Props &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props>;
 
 const Input: React.FC<InputProps> = memo(
-  ({ label, color, onChange, name, required, ...rest }) => {
-    const [value, setValue] = useState('');
+  ({ label, initialValue, color, onChange, name, required, ...rest }) => {
+    const [value, setValue] = useState(initialValue);
 
     const parseNumber = (value: string) =>
       value === '' ? undefined : Number(value);
