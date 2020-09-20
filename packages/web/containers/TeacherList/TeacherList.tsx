@@ -40,7 +40,10 @@ export const TeacherList = memo(() => {
     <FadeIn orientation="down-to-up">
       <Container>
         <PageHeader title="Estes são os proffys disponíveis">
-          <TeacherListFilter key={reset} onSubmit={handleSubmit} />
+          <TeacherListFilter
+            key={`teacher-filter-${reset}`}
+            onSubmit={handleSubmit}
+          />
         </PageHeader>
         <MainContent>
           {aulas.length > 0 ? (
