@@ -48,10 +48,7 @@ const SelectOption = styled.button<OptionProps>`
   background: none;
   border: 0;
   outline: 0;
-
-  :active:enabled {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   :nth-child(2n) {
     background-color: ${({ theme }) => theme.colors.background};

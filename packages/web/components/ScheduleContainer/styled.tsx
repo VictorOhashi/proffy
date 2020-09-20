@@ -15,19 +15,30 @@ export const Container = styled.div`
 `;
 
 export const LegendButton = styled.button`
+  display: flex;
+  flex-direction: column;
   background: none;
   border: 0;
+  outline: 0;
   color: ${({ theme }) => theme.colors.primary};
   font: 700 1.6rem Archivo;
   cursor: pointer;
-  transition: color 0.2s;
-  :hover {
+
+  :hover,
+  :focus {
     color: ${({ theme }) => theme.colors.primaryDark};
+  }
+
+  :focus:after,
+  :hover:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    background-color: ${({ theme }) => theme.colors.primaryLight};
   }
 `;
 
 export const DeleteButton = styled.button`
-  width: 100%;
   height: 3.8rem;
   outline: 0;
   border: 0;
@@ -36,6 +47,7 @@ export const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
+  padding: 1rem;
   margin-top: 1rem;
   grid-column: 1 / -1;
   background: ${({ theme }) => theme.colors.primaryLighter};
@@ -56,7 +68,7 @@ export const DeleteButton = styled.button`
 
   @media (min-width: 700px) {
     position: absolute;
-    height: 3.6rem;
+    padding: 0;
     right: -5rem;
     bottom: 1rem;
     border-radius: 50%;

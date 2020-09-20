@@ -8,6 +8,7 @@ import {
   ContactButton,
 } from './styled';
 import api from '../../services/api';
+import toCurrency from '../../utils/toCurrency';
 
 type TeacherItemProps = {
   aula: {
@@ -44,7 +45,7 @@ export const TeacherItem: React.FC<TeacherItemProps> = memo(({ aula }) => {
       <TeacherFooter>
         <p>
           Preço/Hora:
-          <strong>R$ {custo}</strong>
+          <strong>{toCurrency(custo)}</strong>
         </p>
         <ContactButton
           href={`https://wa.me/55${whatsapp}?text=Encontrei seu perfil no proffy e gostaria de ter aulas com você!`}

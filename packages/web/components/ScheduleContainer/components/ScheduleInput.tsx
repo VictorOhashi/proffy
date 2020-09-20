@@ -24,12 +24,12 @@ const ScheduleInput: React.FC<ScheduleInputProps> = memo(
         onChange={(e) => onChange(id, e)}
         options={[
           { value: 0, label: 'Domingo' },
-          { value: 2, label: 'Segunda-feira' },
-          { value: 3, label: 'Terça-feira' },
-          { value: 4, label: 'Quarta-feira' },
-          { value: 5, label: 'Quinta-feira' },
-          { value: 6, label: 'Sexta-feira' },
-          { value: 7, label: 'Sábado' },
+          { value: 1, label: 'Segunda-feira' },
+          { value: 2, label: 'Terça-feira' },
+          { value: 3, label: 'Quarta-feira' },
+          { value: 4, label: 'Quinta-feira' },
+          { value: 5, label: 'Sexta-feira' },
+          { value: 6, label: 'Sábado' },
         ]}
       />
       <Input

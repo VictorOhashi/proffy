@@ -49,7 +49,7 @@ export default class AulasController {
       })
       .join('materias', 'aulas.id_materia', 'materias.id')
       .join('usuarios', 'aulas.id_usuario', '=', 'usuarios.id')
-      .select(['aulas.id', 'aulas.custo', 'usuarios.*', 'materias.*']);
+      .select(['aulas.id', 'aulas.custo', 'usuarios.*', 'materias.materia']);
 
     return res.json(aulas);
   }

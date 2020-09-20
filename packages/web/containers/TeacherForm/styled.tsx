@@ -61,6 +61,7 @@ export const SaveButton = styled.button`
   background: ${({ theme }) => theme.colors.secundary};
   color: ${({ theme }) => theme.colors.buttonText};
   border: 0;
+  outline: 0;
   border-radius: 0.8rem;
   cursor: pointer;
   font: 700 1.6rem Archivo;
@@ -72,7 +73,8 @@ export const SaveButton = styled.button`
   margin-top: 3.2rem;
   ${({ theme }) => theme.elevation[3]};
 
-  :hover {
+  :hover,
+  :focus {
     background: ${({ theme }) => theme.colors.secundaryDark};
     ${({ theme }) => theme.elevation[0]};
   }
