@@ -44,7 +44,7 @@ icons/
 __generated__/
 
 # Expo
-.expo/*
+.expo
 npm-debug.*
 *.jks
 *.p8
