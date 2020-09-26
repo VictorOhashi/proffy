@@ -1,6 +1,6 @@
-import { useState, useCallback, memo, useEffect, useRef } from 'react';
+import { useState, useCallback, memo, useEffect } from 'react';
 
-import { Archive } from '@styled-icons/boxicons-regular';
+import { SearchOff } from '@styled-icons/material';
 import {
   FadeIn,
   PageHeader,
@@ -50,7 +50,7 @@ export const TeacherList = memo(() => {
             aulas.map((aula) => <TeacherItem key={aula.id} aula={aula} />)
           ) : (
             <EmptyState
-              icon={Archive}
+              icon={SearchOff}
               title="Nenhum professor encontrado"
               subTitle="Nenhum professor encontrado em nossos arquivos, tente alterar os filtros"
               buttonText="Limpar pesquisa"

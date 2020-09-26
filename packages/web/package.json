@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "@proffy/assets": "0.1.0",
-    "@styled-icons/evaicons-outline": "^10.18.0",
     "@styled-icons/boxicons-regular": "^10.18.0",
+    "@styled-icons/evaicons-outline": "^10.18.0",
+    "@styled-icons/material": "^10.18.0",
     "axios": "^0.20.0",
     "framer-motion": "^2.4.3-beta.2",
     "next": "9.5.2",
