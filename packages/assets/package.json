@@ -1,32 +1,31 @@
 {
   "name": "@proffy/assets",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "scripts": {
-    "pre:build": "rimraf ./temp && svgr -d temp ./ --memo && node ./generate",
-    "post:build": "rimraf ./dist && babel ./temp -d dist",
-    "build:types": "node ./generate --ts && rimraf ./temp",
-    "transpile": "yarn pre:build && yarn post:build && yarn build:types"
+    "build:web": "svgr -d src src --memo --typescript",
+    "build:native": "svgr -d src/native src --native --memo --typescript",
+    "transpile": "rollup -c"
   },
   "dependencies": {
-    "@svgr/cli": "^5.4.0",
+    "react-native-svg": "^12.1.0"
+  },
+  "peerDependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "rimraf": "^3.0.2"
+    "@svgr/cli": "^5.4.0",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "rollup": "^2.28.2",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "typescript": "^4.0.3"
   },
   "files": [
-    "dist",
-    "icons",
-    "images"
+    "dist"
   ]
 }

@@ -1,21 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
-export default function App() {
+import Landing from './src/pages/Landing';
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Test abc!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Landing />
+      <StatusBar />
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
