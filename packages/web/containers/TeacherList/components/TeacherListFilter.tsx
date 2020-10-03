@@ -24,13 +24,10 @@ const TeacherListFilter: React.FC<TeacherListFilterProps> = memo(
         .catch((e) => showToast(e.message, { type: 'error' }));
     }, []);
 
-    const handleFormSubmit = useCallback(
-      (e: FormEvent) => {
-        e.preventDefault();
-        onSubmit(formState);
-      },
-      [formState]
-    );
+    const handleFormSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      onSubmit(formState);
+    };
 
     const handleChange = useCallback(({ name, value }) => {
       setFormState((prev) => ({ ...prev, [name]: value }));

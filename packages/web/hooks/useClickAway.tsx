@@ -1,16 +1,13 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 type ClickAway = (handleClickAway: () => void, ref: any) => void;
 
 const useClickAway: ClickAway = (handleClickAway, ref) => {
-  const handleClick = useCallback(
-    (e) => {
-      if (!ref.current?.contains(e.target)) {
-        handleClickAway();
-      }
-    },
-    [handleClickAway]
-  );
+  const handleClick = (e) => {
+    if (!ref.current?.contains(e.target)) {
+      handleClickAway();
+    }
+  };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClick);

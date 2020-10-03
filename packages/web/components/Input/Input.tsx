@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from 'react';
+import { memo, useState } from 'react';
 
 import Label from '../Label';
 import { InputBlock, StyledInput } from './styled';
@@ -21,25 +21,22 @@ const Input: React.FC<InputProps> = memo(
     const parseNumber = (value: string) =>
       value === '' ? undefined : Number(value);
 
-    const handleChange = useCallback(
-      (event) => {
-        const { value, type } = event.target;
-        let inputValue = value,
-          newValue = value;
+    const handleChange = (event) => {
+      const { value, type } = event.target;
+      let inputValue = value,
+        newValue = value;
 
-        if (type === 'number') {
-          inputValue = value.replace(/\D/g, '');
-          newValue = parseNumber(inputValue);
-        } else if (type === 'tel') {
-          newValue = parseNumber(value.replace(/\D/g, ''));
-          inputValue = stringFormat('(##) #####-####', newValue);
-        }
+      if (type === 'number') {
+        inputValue = value.replace(/\D/g, '');
+        newValue = parseNumber(inputValue);
+      } else if (type === 'tel') {
+        newValue = parseNumber(value.replace(/\D/g, ''));
+        inputValue = stringFormat('(##) #####-####', newValue);
+      }
 
-        setValue(inputValue ?? '');
-        onChange({ name, value: newValue });
-      },
-      [name]
-    );
+      setValue(inputValue ?? '');
+      onChange({ name, value: newValue });
+    };
 
     return (
       <InputBlock>

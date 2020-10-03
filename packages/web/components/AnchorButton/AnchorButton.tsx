@@ -2,7 +2,6 @@ import { memo } from 'react';
 import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
-import { useCallback } from 'react';
 
 type StyledAnchorButtonProps = {
   color: Colors;
@@ -43,26 +42,22 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
 
 type AnchorButtonProps = StyledAnchorButtonProps & {
   href: string;
-  as: string;
 };
 
 const AnchorButton: React.FC<AnchorButtonProps> = memo((props) => {
-  const { color, hoverColor, children, href, as } = props;
+  const { color, hoverColor, children, href } = props;
 
   const router = useRouter();
 
-  const handleRoute = useCallback(() => {
-    router.push(href, as);
-  }, [router, href, as]);
+  const handleRoute = () => {
+    router.push(href);
+  };
 
-  const handleKeydown = useCallback(
-    (e) => {
-      if (e.key === 'Enter') {
-        handleRoute();
-      }
-    },
-    [handleRoute]
-  );
+  const handleKeydown = (e) => {
+    if (e.key === 'Enter') {
+      handleRoute();
+    }
+  };
 
   return (
     <StyledAnchorButton

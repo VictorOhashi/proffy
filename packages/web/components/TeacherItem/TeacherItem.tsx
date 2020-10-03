@@ -1,5 +1,5 @@
-import { memo, useCallback } from 'react';
-import WhatsappIcon from '@proffy/assets/icons/whatsapp.svg';
+import { memo } from 'react';
+import { WhatsappSVG } from '@proffy/assets';
 
 import {
   ContainerItem,
@@ -9,28 +9,20 @@ import {
 } from './styled';
 import api from '../../services/api';
 import toCurrency from '../../utils/toCurrency';
+import { Aula } from '../../containers/TeacherList';
 
 type TeacherItemProps = {
-  aula: {
-    id: number;
-    materia: string;
-    custo: number;
-    nome: string;
-    email: string;
-    avatar: string;
-    whatsapp: number;
-    bio: string;
-  };
+  aula: Aula;
 };
 
 export const TeacherItem: React.FC<TeacherItemProps> = memo(({ aula }) => {
   const { id, nome, materia, avatar, bio, custo, whatsapp } = aula;
 
-  const handleClickContact = useCallback(() => {
+  const handleClickContact = () => {
     api.post('/conexoes', {
       id_usuario: id,
     });
-  }, []);
+  };
 
   return (
     <ContainerItem>
@@ -52,7 +44,7 @@ export const TeacherItem: React.FC<TeacherItemProps> = memo(({ aula }) => {
           target="_blank"
           onClick={handleClickContact}
         >
-          <img src={WhatsappIcon} alt="Whatsapp" />
+          <img src={WhatsappSVG} alt="Whatsapp" />
           Entrar em contato
         </ContactButton>
       </TeacherFooter>

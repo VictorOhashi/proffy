@@ -75,16 +75,16 @@ export const Select: React.FC<SelectProps> = memo(
       [name]
     );
 
-    const handleInputChange = useCallback((e) => {
+    const handleInputChange = (e) => {
       const { value } = e.target;
       setInputValue(value);
-    }, []);
+    };
 
-    const handleKeyDown = useCallback((e) => {
+    const handleKeyDown = (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
       }
-    }, []);
+    };
 
     const value = inputValue !== null ? inputValue : selectedValue.label;
 

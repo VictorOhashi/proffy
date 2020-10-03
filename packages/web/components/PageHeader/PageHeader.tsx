@@ -1,7 +1,6 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useRouter } from 'next/router';
-import LogoImg from '@proffy/assets/images/logo.svg';
-import BackIcon from '@proffy/assets/icons/back.svg';
+import { LogoSVG, BackSVG } from '@proffy/assets';
 
 import {
   Header,
@@ -21,18 +20,15 @@ export const PageHeader: React.FC<PageHeaderProps> = memo(
   ({ title, subTitle, children }) => {
     const router = useRouter();
 
-    const handleRoute = useCallback(() => {
+    const handleRoute = () => {
       router.push('/');
-    }, [router]);
+    };
 
-    const handleKeydown = useCallback(
-      (e) => {
-        if (e.key === 'Enter') {
-          handleRoute();
-        }
-      },
-      [handleRoute]
-    );
+    const handleKeydown = (e) => {
+      if (e.key === 'Enter') {
+        handleRoute();
+      }
+    };
 
     return (
       <Header>
@@ -42,10 +38,10 @@ export const PageHeader: React.FC<PageHeaderProps> = memo(
             onClick={handleRoute}
             onKeyDown={handleKeydown}
           >
-            <img src={BackIcon} alt="Voltar" />
+            <img src={BackSVG} alt="Voltar" />
           </AnchorButton>
 
-          <img src={LogoImg} alt="Proffy" />
+          <img src={LogoSVG} alt="Proffy" />
         </TopBarContainer>
         <HeaderContent>
           <HeaderTitle>{title}</HeaderTitle>

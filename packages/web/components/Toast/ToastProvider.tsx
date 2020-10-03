@@ -13,10 +13,10 @@ export const useToast = () => useContext<ToastContext>(ToastContext);
 const ToastProvider = memo(({ children }) => {
   const [toasts, setToasts] = useState([]);
 
-  const toast = useCallback((text: string, options: ToastOptions) => {
+  const toast = (text: string, options: ToastOptions) => {
     const id = Math.floor(Math.random() * 100) + Date.now();
     setToasts((prev) => [...prev, { id, text, ...options }]);
-  }, []);
+  };
 
   const handleClose = useCallback((id: number) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));

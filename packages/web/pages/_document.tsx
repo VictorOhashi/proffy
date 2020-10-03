@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
@@ -30,7 +30,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html dir="ltr" lang="pt-BR">
+      <Html dir="ltr" lang="pt-BR">
         <Head>
           <meta charSet="utf-8" />
           <link
@@ -42,7 +42,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

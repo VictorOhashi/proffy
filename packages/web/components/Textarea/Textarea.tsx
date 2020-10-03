@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from 'react';
+import { memo, useState } from 'react';
 
 import Label from '../Label';
 import { TextareaBlock, StyledTextarea } from './styled';
@@ -16,14 +16,11 @@ export const Textarea: React.FC<TextareaProps> = memo(
   ({ name, label, color, onChange, required, ...rest }) => {
     const [value, setValue] = useState('');
 
-    const handleChange = useCallback(
-      (event) => {
-        const { value } = event.target;
-        setValue(value);
-        onChange({ name, value });
-      },
-      [name]
-    );
+    const handleChange = (event) => {
+      const { value } = event.target;
+      setValue(value);
+      onChange({ name, value });
+    };
 
     return (
       <TextareaBlock>

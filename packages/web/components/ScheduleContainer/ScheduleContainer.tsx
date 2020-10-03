@@ -24,7 +24,7 @@ export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
       },
     ]);
 
-    const handleAddSchedule = useCallback(() => {
+    const handleAddSchedule = () =>
       setSchedules((prev) => [
         ...prev,
         {
@@ -33,7 +33,6 @@ export const ScheduleContainer: React.FC<ScheduleContainerProps> = memo(
           horario_fim: '',
         },
       ]);
-    }, []);
 
     const handleChange = useCallback(
       (id, target) => {

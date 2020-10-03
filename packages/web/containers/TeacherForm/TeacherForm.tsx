@@ -1,7 +1,7 @@
 import { memo, useCallback, useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 
-import WarningIcon from '@proffy/assets/icons/warning.svg';
+import { WarningSVG } from '@proffy/assets';
 
 import {
   Fieldset,
@@ -31,24 +31,21 @@ const FormInputs = memo(() => {
       .catch((e) => showToast(e.message, { type: 'error' }));
   }, []);
 
-  const handleFormSubmit = useCallback(
-    (e: FormEvent) => {
-      e.preventDefault();
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
-      api
-        .post('aulas', formState)
-        .then(() => {
-          showToast('Usuário cadastrado com sucesso', {
-            type: 'success',
-          });
-          router.push('/');
-        })
-        .catch((e) => {
-          showToast(e.message, { type: 'error' });
+    api
+      .post('aulas', formState)
+      .then(() => {
+        showToast('Usuário cadastrado com sucesso', {
+          type: 'success',
         });
-    },
-    [formState, router]
-  );
+        router.push('/');
+      })
+      .catch((e) => {
+        showToast(e.message, { type: 'error' });
+      });
+  };
 
   const handleChange = useCallback(({ name, value }) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -125,7 +122,7 @@ const FormInputs = memo(() => {
 
       <Footer>
         <FooterText>
-          <img src={WarningIcon} alt="Aviso importante" />
+          <img src={WarningSVG} alt="Aviso importante" />
           Importante! <br />
           Preencha todos os dados
         </FooterText>

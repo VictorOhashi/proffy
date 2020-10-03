@@ -32,12 +32,7 @@ const Error404 = () => {
     <Container>
       <StatusCode>404</StatusCode>
       <ErrorDescription>Page not found</ErrorDescription>
-      <AnchorButton
-        href="/"
-        as="/"
-        color="secundary"
-        hoverColor="secundaryDark"
-      >
+      <AnchorButton href="/" color="secundary" hoverColor="secundaryDark">
         Retornar para o início
       </AnchorButton>
     </Container>

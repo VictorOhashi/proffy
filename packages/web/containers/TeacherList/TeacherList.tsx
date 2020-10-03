@@ -1,49 +1,45 @@
-import { useState, useCallback, memo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import { SearchOff } from '@styled-icons/material';
-import {
-  FadeIn,
-  PageHeader,
-  TeacherItem,
-  EmptyState,
-  useToast,
-} from '../../components';
+import { FadeIn, PageHeader, TeacherItem, EmptyState } from '../../components';
 import { Container, MainContent } from './styled';
 import TeacherListFilter from './components/TeacherListFilter';
-import api from '../../services/api';
 
-export const TeacherList = memo(() => {
-  const [aulas, setAulas] = useState([]);
-  const [params, setParams] = useState();
-  const [reset, setReset] = useState(0);
-  const showToast = useToast();
+export type Aula = {
+  id: number;
+  materia: string;
+  custo: number;
+  nome: string;
+  email: string;
+  avatar: string;
+  whatsapp: number;
+  bio: string;
+};
 
-  useEffect(() => {
-    api
-      .get('aulas', {
-        params,
-      })
-      .then(({ data }) => setAulas(data))
-      .catch((e) => showToast(e.message, { type: 'error' }));
-  }, [params]);
+type TeacherListProps = {
+  aulas: Array<Aula>;
+};
 
-  const handleSubmit = useCallback((params) => {
-    setParams(params);
-  }, []);
+export const TeacherList: React.FC<TeacherListProps> = ({ aulas }) => {
+  const router = useRouter();
 
-  const handleClearForm = useCallback(() => {
-    setParams(null);
-    setReset(Math.random());
-  }, []);
+  const handleQueryParams = (params: object) => {
+    let query = {};
+    Object.keys(params).map((key) => {
+      if (params[key] !== undefined) {
+        query[key] = params[key];
+      }
+    });
+    router.push({
+      query,
+    });
+  };
 
   return (
     <FadeIn orientation="down-to-up">
       <Container>
         <PageHeader title="Estes são os proffys disponíveis">
-          <TeacherListFilter
-            key={`teacher-filter-${reset}`}
-            onSubmit={handleSubmit}
-          />
+          <TeacherListFilter onSubmit={handleQueryParams} />
         </PageHeader>
         <MainContent>
           {aulas.length > 0 ? (
@@ -54,13 +50,17 @@ export const TeacherList = memo(() => {
               title="Nenhum professor encontrado"
               subTitle="Nenhum professor encontrado em nossos arquivos, tente alterar os filtros"
               buttonText="Limpar pesquisa"
-              onClick={handleClearForm}
+              onClick={() => handleQueryParams({})}
             />
           )}
         </MainContent>
       </Container>
     </FadeIn>
   );
-});
+};
+
+TeacherList.defaultProps = {
+  aulas: [],
+};
 
 export default TeacherList;
