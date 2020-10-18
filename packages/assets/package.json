@@ -6,7 +6,7 @@
   "module": "./dist/index.esm.js",
   "scripts": {
     "build:web": "svgr -d src src --memo --typescript --title-prop",
-    "build:native": "svgr -d native src --native --memo --typescript --title-prop",
+    "build:native": "svgr -d native/src src --native --memo --typescript --title-prop",
     "build": "yarn build:web && yarn build:native"
   },
   "dependencies": {
