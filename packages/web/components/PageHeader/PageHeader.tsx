@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useRouter } from 'next/router';
-import { LogoSVG, BackSVG } from '@proffy/assets';
+import { Logo, Back } from '@proffy/assets';
 
 import {
   Header,
@@ -38,10 +38,10 @@ export const PageHeader: React.FC<PageHeaderProps> = memo(
             onClick={handleRoute}
             onKeyDown={handleKeydown}
           >
-            <img src={BackSVG} alt="Voltar" />
+            <Back title="Voltar" />
           </AnchorButton>
 
-          <img src={LogoSVG} alt="Proffy" />
+          <Logo title="Proffy" />
         </TopBarContainer>
         <HeaderContent>
           <HeaderTitle>{title}</HeaderTitle>

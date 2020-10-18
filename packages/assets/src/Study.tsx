@@ -1,8 +1,24 @@
 import * as React from "react";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgStudy(props: React.SVGProps<SVGSVGElement>) {
+function SvgStudy({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <svg width={40} height={40} fill="none" {...props}>
+    <svg
+      width={40}
+      height={40}
+      viewBox="0 0 40 40"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <path
         d="M5 6h9c1.591 0 3.117.656 4.243 1.822a6.34 6.34 0 011.757 4.4V34a4.756 4.756 0 00-1.318-3.3 4.42 4.42 0 00-3.182-1.367H5V6z"
         stroke="#fff"

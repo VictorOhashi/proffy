@@ -1,7 +1,7 @@
 import { memo, useCallback, useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 
-import { WarningSVG } from '@proffy/assets';
+import { Warning } from '@proffy/assets';
 
 import {
   Fieldset,
@@ -122,7 +122,7 @@ const FormInputs = memo(() => {
 
       <Footer>
         <FooterText>
-          <img src={WarningSVG} alt="Aviso importante" />
+          <Warning title="Aviso importante" />
           Importante! <br />
           Preencha todos os dados
         </FooterText>

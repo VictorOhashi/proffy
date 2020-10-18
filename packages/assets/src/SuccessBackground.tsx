@@ -1,8 +1,24 @@
 import * as React from "react";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgSuccessBackground(props: React.SVGProps<SVGSVGElement>) {
+function SvgSuccessBackground({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <svg width={1120} height={565} fill="none" {...props}>
+    <svg
+      width={1120}
+      height={565}
+      viewBox="0 0 1120 565"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <path
         d="M1020.77 183.235c0 5.642-4.56 10.217-10.2 10.217-5.63 0-10.2-4.575-10.2-10.217 0-5.643 4.57-10.217 10.2-10.217 5.62 0 10.2 4.574 10.2 10.217zM1017.95 190.283l7.2 7.226M276.847 153.154l10.735 10.749M287.582 153.154l-10.735 10.749M892.155 406.633l10.735 10.749M902.89 406.633l-10.735 10.749M305.657 501.133v15.2M313.266 508.732h-15.198M100.699 250.247c0 5.09-4.124 9.238-9.226 9.238-5.083 0-9.225-4.13-9.225-9.238 0-5.091 4.124-9.238 9.225-9.238 5.102.018 9.226 4.147 9.226 9.238zM643.628 11.056c0 5.09-4.124 9.238-9.225 9.238-5.084 0-9.226-4.13-9.226-9.238 0-5.09 4.124-9.238 9.226-9.238 5.101.018 9.225 4.148 9.225 9.238zM778.971 553.585c0 5.091-4.124 9.238-9.225 9.238-5.084 0-9.225-4.13-9.225-9.238 0-5.091 4.123-9.238 9.225-9.238 5.101.018 9.225 4.147 9.225 9.238z"
         stroke="#04D361"

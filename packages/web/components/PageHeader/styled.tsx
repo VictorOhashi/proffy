@@ -19,8 +19,9 @@ export const TopBarContainer = styled.div`
   color: ${({ theme }) => theme.colors.primaryText};
   padding: 1.6rem 0;
 
-  & > img {
+  & > svg {
     height: 1.6rem;
+    width: auto;
   }
 
   @media (min-width: 700px) {

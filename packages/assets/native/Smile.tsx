@@ -1,9 +1,25 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgSmile(props: React.SVGProps<SVGSVGElement>) {
+function SvgSmile({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <Svg width={32} height={32} fill="none" {...props}>
+    <Svg
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <Path
         d="M16 32c8.837 0 16-7.163 16-16S24.837 0 16 0 0 7.163 0 16s7.163 16 16 16z"
         fill="#FFCC4D"

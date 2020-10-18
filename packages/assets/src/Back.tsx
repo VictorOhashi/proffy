@@ -1,8 +1,24 @@
 import * as React from "react";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgBack(props: React.SVGProps<SVGSVGElement>) {
+function SvgBack({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <svg width={49} height={32} fill="none" {...props}>
+    <svg
+      width={49}
+      height={32}
+      viewBox="0 0 49 32"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <g
         clipPath="url(#back_svg__clip0)"
         stroke="#BDA5F6"

@@ -1,9 +1,25 @@
 import * as React from "react";
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgBack(props: React.SVGProps<SVGSVGElement>) {
+function SvgBack({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <Svg width={49} height={32} fill="none" {...props}>
+    <Svg
+      width={49}
+      height={32}
+      viewBox="0 0 49 32"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <G
         clipPath="url(#back_svg__clip0)"
         stroke="#BDA5F6"

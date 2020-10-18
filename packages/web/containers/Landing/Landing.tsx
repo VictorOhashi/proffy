@@ -1,9 +1,9 @@
 import {
-  GiveClassesSVG,
-  PurpleHeartSVG,
-  LandingSVG,
-  LogoSVG,
-  StudySVG,
+  GiveClasses,
+  PurpleHeart,
+  Landing as LandingSVG,
+  Logo,
+  Study,
 } from '@proffy/assets';
 
 import {
@@ -25,13 +25,12 @@ const Landing: React.FC<LandingProps> = ({ total }) => {
     <PageLanding>
       <PageLandingContent>
         <LogoContainer>
-          <img src={LogoSVG} style={{ height: '10rem' }} alt="Proffy logo" />
+          <Logo style={{ height: '10rem' }} title="Proffy logo" />
           <h2>Sua plataforma de estudos online.</h2>
         </LogoContainer>
-        <img
-          src={LandingSVG}
+        <LandingSVG
           style={{ gridArea: 'hero', width: '100%' }}
-          alt="Proffy image"
+          title="Proffy image"
         />
         <ButtonContainer>
           <AnchorButton
@@ -39,7 +38,7 @@ const Landing: React.FC<LandingProps> = ({ total }) => {
             color="primaryLighter"
             hoverColor="primaryLight"
           >
-            <img src={StudySVG} alt="Imagem livro" />
+            <Study title="Imagem livro" />
             Estudar
           </AnchorButton>
           <AnchorButton
@@ -47,13 +46,13 @@ const Landing: React.FC<LandingProps> = ({ total }) => {
             color="secundary"
             hoverColor="secundaryDark"
           >
-            <img src={GiveClassesSVG} alt="Imagem apresentação" />
+            <GiveClasses title="Imagem apresentação" />
             Dar aulas
           </AnchorButton>
         </ButtonContainer>
         <TotalConnections>
           Total de {total} conexões já realizadas
-          <img src={PurpleHeartSVG} alt="Coração" />
+          <PurpleHeart title="Coração" />
         </TotalConnections>
       </PageLandingContent>
     </PageLanding>

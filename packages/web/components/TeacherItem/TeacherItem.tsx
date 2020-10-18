@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { WhatsappSVG } from '@proffy/assets';
+import { Whatsapp } from '@proffy/assets';
 
 import {
   ContainerItem,
@@ -44,7 +44,7 @@ export const TeacherItem: React.FC<TeacherItemProps> = memo(({ aula }) => {
           target="_blank"
           onClick={handleClickContact}
         >
-          <img src={WhatsappSVG} alt="Whatsapp" />
+          <Whatsapp title="Whatsapp" />
           Entrar em contato
         </ContactButton>
       </TeacherFooter>

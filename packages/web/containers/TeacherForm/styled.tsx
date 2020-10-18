@@ -46,7 +46,7 @@ export const FooterText = styled.p`
   line-height: 2.4rem;
   color: ${({ theme }) => theme.colors.complementText};
 
-  & img {
+  & svg {
     margin-right: 2rem;
   }
 

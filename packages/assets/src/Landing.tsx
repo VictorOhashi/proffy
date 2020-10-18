@@ -1,8 +1,24 @@
 import * as React from "react";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgLanding(props: React.SVGProps<SVGSVGElement>) {
+function SvgLanding({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <svg width={599} height={352} fill="none" {...props}>
+    <svg
+      width={599}
+      height={352}
+      viewBox="0 0 599 352"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <path
         d="M305.753 349.21c1.213-6.364 4.979-12.199 10.267-15.924M305.589 351c.228-5.314 2.279-18.107 7.13-26.115M305.662 350.343c.839-9.478.766-19.952-.712-29.357"
         stroke="#04D361"

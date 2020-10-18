@@ -47,13 +47,13 @@ export const LogoContainer = styled.div`
     text-align: left;
     margin: 0;
 
-    img {
+    svg {
       height: 100%;
     }
   }
 
   @media (max-width: 700px) {
-    img {
+    svg {
       width: 100%;
     }
   }
@@ -75,7 +75,7 @@ export const TotalConnections = styled.span`
   white-space: nowrap;
   grid-area: total;
 
-  img {
+  svg {
     margin-left: 0.8rem;
   }
 `;

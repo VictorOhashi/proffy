@@ -1,8 +1,24 @@
 import * as React from "react";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgRocket(props: React.SVGProps<SVGSVGElement>) {
+function SvgRocket({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <svg width={32} height={32} fill="none" {...props}>
+    <svg
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <path
         d="M.025 15.543l7.309-6.4 14.617.914.914 14.629L16.47 32s0-5.485-5.482-10.971C5.505 15.542.025 15.543.025 15.543z"
         fill="#6842C2"

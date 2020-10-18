@@ -1,9 +1,25 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgWhatsapp(props: React.SVGProps<SVGSVGElement>) {
+function SvgWhatsapp({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <Svg width={20} height={20} fill="none" {...props}>
+    <Svg
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <Path
         d="M10.002 0h-.005C4.485 0 0 4.485 0 10c0 2.188.705 4.215 1.904 5.861L.658 19.576 4.5 18.347A9.913 9.913 0 0010.002 20C15.517 20 20 15.514 20 10S15.516 0 10.002 0z"
         fill="#4CAF50"

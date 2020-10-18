@@ -1,9 +1,25 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
+interface SVGRProps {
+  title?: string;
+  titleId?: string;
+}
 
-function SvgSuccessCheckIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgSuccessCheckIcon({
+  title,
+  titleId,
+  ...props
+}: React.SVGProps<SVGSVGElement> & SVGRProps) {
   return (
-    <Svg width={120} height={120} fill="none" {...props}>
+    <Svg
+      width={120}
+      height={120}
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
       <Path
         d="M80 105H40c-13.805 0-25-11.195-25-25V40c0-13.805 11.195-25 25-25h40c13.805 0 25 11.195 25 25v40c0 13.805-11.195 25-25 25z"
         stroke="#04D361"

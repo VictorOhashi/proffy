@@ -6,7 +6,7 @@ import { Container } from './styled';
 const LandingPage = () => {
   return (
     <Container>
-      <Landing viewBox="0 0 300 300" />
+      <Landing width="100%" />
     </Container>
   );
 };

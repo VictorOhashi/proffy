@@ -34,7 +34,7 @@ const StyledAnchorButton = styled.a<StyledAnchorButtonProps>`
     ${({ theme }) => theme.elevation[0]};
   }
 
-  img {
+  svg {
     margin-right: 2.4rem;
     width: 4rem;
   }

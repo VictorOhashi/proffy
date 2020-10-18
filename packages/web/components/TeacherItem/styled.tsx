@@ -107,7 +107,7 @@ export const ContactButton = styled.a`
     font-size: 1.6rem;
     justify-content: center;
 
-    & img {
+    & svg {
       margin-right: 1.6rem;
     }
   }
