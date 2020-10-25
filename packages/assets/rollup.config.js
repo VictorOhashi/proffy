@@ -1,3 +1,5 @@
+import path from 'path';
+
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
@@ -39,12 +41,12 @@ export default [
     input: 'src/native/index.tsx',
     output: [
       {
-        file: nativePkg.main,
+        file: path.resolve('./native', nativePkg.main),
         format: 'cjs',
         sourcemap: true,
       },
       {
-        file: nativePkg.module,
+        file: path.resolve('./native', nativePkg.module),
         format: 'es',
         sourcemap: true,
       },
