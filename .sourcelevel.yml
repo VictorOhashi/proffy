@@ -6,4 +6,5 @@ engines:
     enabled: true
   remark-lint:
     enabled: true
-exclude_paths: ['*.config.js', 'test']
+exclude_paths:
+  - *.config.js
