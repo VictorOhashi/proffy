@@ -1,24 +1,54 @@
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
-import image from '@rollup/plugin-image';
+import commonjs from '@rollup/plugin-commonjs';
+import external from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 
-import packageJson from './package.json';
+import pkg from './package.json';
+import nativePkg from './native/package.json';
 
-export default {
-  input: './src/index.tsx',
-  output: [
-    {
-      file: packageJson.main,
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: packageJson.module,
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  plugins: [peerDepsExternal(), resolve(), commonjs(), typescript(), image()],
-};
+const plugins = ({ include } = {}) => [
+  external(),
+  resolve(),
+  json(),
+  typescript({
+    abortOnError: false,
+    tsconfigOverride: { include },
+  }),
+  commonjs(),
+];
+
+export default [
+  {
+    input: 'src/web/index.tsx',
+    output: [
+      {
+        file: pkg.main,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: pkg.module,
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
+    plugins: plugins({ include: ['./src/web'] }),
+  },
+  {
+    input: 'src/native/index.tsx',
+    output: [
+      {
+        file: nativePkg.main,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: nativePkg.module,
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
+    plugins: plugins({ include: ['./src/native'] }),
+  },
+];

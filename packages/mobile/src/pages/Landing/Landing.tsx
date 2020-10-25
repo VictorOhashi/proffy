@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Landing } from '@proffy/assets/dist/native';
+import { Landing } from '@proffy/assets/native';
 import { Container } from './styled';
 
 const LandingPage = () => {

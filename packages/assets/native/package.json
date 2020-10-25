@@ -1,6 +1,6 @@
 {
-  "name": "@proffy/assets-native",
   "private": true,
-  "main": "./dist/index.native.cjs.js",
-  "module": "./dist/index.native.esm.js"
+  "main": "native/index.native.cjs.js",
+  "module": "native/index.native.esm.js",
+  "types": "native/index.d.ts"
 }

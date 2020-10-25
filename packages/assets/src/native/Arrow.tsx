@@ -1,23 +1,19 @@
-import * as React from "react";
-import Svg, { Defs, ClipPath, Path, G } from "react-native-svg";
+import * as React from 'react';
+import Svg, { Defs, ClipPath, Path, G, SvgProps } from 'react-native-svg';
 interface SVGRProps {
   title?: string;
   titleId?: string;
 }
 
-function SvgArrow({
-  title,
-  titleId,
-  ...props
-}: React.SVGProps<SVGSVGElement> & SVGRProps) {
+function SvgArrow({ title, titleId, ...props }: SvgProps & SVGRProps) {
   return (
     <Svg
       viewBox="0 0 50 50"
       width={50}
       height={50}
       style={{
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
       }}
       aria-labelledby={titleId}
       {...props}
@@ -36,7 +32,6 @@ function SvgArrow({
           strokeWidth={2}
           d="M5 15l20 20 20-20"
           fill="none"
-          display="block"
         />
       </G>
     </Svg>

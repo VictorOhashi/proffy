@@ -1,15 +1,11 @@
-import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import * as React from 'react';
+import Svg, { Path, SvgProps } from 'react-native-svg';
 interface SVGRProps {
   title?: string;
   titleId?: string;
 }
 
-function SvgWarning({
-  title,
-  titleId,
-  ...props
-}: React.SVGProps<SVGSVGElement> & SVGRProps) {
+function SvgWarning({ title, titleId, ...props }: SvgProps & SVGRProps) {
   return (
     <Svg
       width={32}

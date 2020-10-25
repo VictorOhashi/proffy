@@ -1,15 +1,11 @@
-import * as React from "react";
-import Svg, { G, Path, Defs, ClipPath, Rect } from "react-native-svg";
+import * as React from 'react';
+import Svg, { G, Path, Defs, ClipPath, Rect, SvgProps } from 'react-native-svg';
 interface SVGRProps {
   title?: string;
   titleId?: string;
 }
 
-function SvgGiveClasses({
-  title,
-  titleId,
-  ...props
-}: React.SVGProps<SVGSVGElement> & SVGRProps) {
+function SvgGiveClasses({ title, titleId, ...props }: SvgProps & SVGRProps) {
   return (
     <Svg
       width={40}

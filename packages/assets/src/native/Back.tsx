@@ -1,15 +1,11 @@
-import * as React from "react";
-import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
+import * as React from 'react';
+import Svg, { G, Path, Defs, ClipPath, SvgProps } from 'react-native-svg';
 interface SVGRProps {
   title?: string;
   titleId?: string;
 }
 
-function SvgBack({
-  title,
-  titleId,
-  ...props
-}: React.SVGProps<SVGSVGElement> & SVGRProps) {
+function SvgBack({ title, titleId, ...props }: SvgProps & SVGRProps) {
   return (
     <Svg
       width={49}
