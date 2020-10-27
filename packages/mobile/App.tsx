@@ -13,8 +13,8 @@ import {
   Poppins_600SemiBold,
 } from '@expo-google-fonts/poppins';
 
-import Landing from './pages/Landing';
 import defaultTheme from './styles/theme';
+import AppStack from './routes/AppStack';
 
 const App = () => {
   let [fontsLoaded] = useFonts({
@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Landing />
+      <AppStack />
       <StatusBar style="light" />
     </ThemeProvider>
   );

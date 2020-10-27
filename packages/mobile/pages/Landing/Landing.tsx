@@ -7,15 +7,9 @@ import {
   PurpleHeart,
 } from '@proffy/assets/native';
 
-import {
-  Container,
-  Title,
-  TitleBold,
-  ButtonContainer,
-  Button,
-  ButtonText,
-  TotalConnections,
-} from './styled';
+import { Container } from '../../components';
+import ArchorButton from './components/ArchorButton';
+import { Title, TitleBold, ButtonContainer, TotalConnections } from './styled';
 
 const LandingPage = () => {
   return (
@@ -26,14 +20,16 @@ const LandingPage = () => {
         <TitleBold>O que deseja fazer?</TitleBold>
       </Title>
       <ButtonContainer>
-        <Button color="primaryLighter">
+        <ArchorButton navigateTo="Study" text="Estudar" color="primaryLighter">
           <Study />
-          <ButtonText>Estudar</ButtonText>
-        </Button>
-        <Button color="secundary">
+        </ArchorButton>
+        <ArchorButton
+          navigateTo="GiveClasses"
+          text="Dar aulas"
+          color="secundary"
+        >
           <GiveClasses />
-          <ButtonText>Dar aulas</ButtonText>
-        </Button>
+        </ArchorButton>
       </ButtonContainer>
       <TotalConnections>
         Total de 285 conexões já realizadas. <PurpleHeart />
