@@ -17,10 +17,10 @@
     "react-native-svg": "*"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@types/react": "^16.9.49",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@types/react": "^16.9.55",
     "@types/react-native": "^0.63.30",
     "react": "^17.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
@@ -28,6 +28,6 @@
     "rollup": "^2.32.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.28.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.5"
   }
 }
