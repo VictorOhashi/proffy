@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { Container } from '../../components';
+import { Container, PageHeader } from '../../components';
 
 const TeacherListPage = () => {
-  return <Container></Container>;
+  return (
+    <>
+      <PageHeader />
+    </>
+  );
 };
 
 export default TeacherListPage;
