@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Container } from '../../components';
+import { PageHeader } from '../../components';
 
 const FavoritesPage = () => {
-  return <Container></Container>;
+  return <PageHeader title="Meus proffys favoritos" />;
 };
 
 export default FavoritesPage;

@@ -12,6 +12,8 @@ const theme = {
     primaryTitleDark: '#ececec',
     primaryText: '#D4C2FF',
     titleText: '#32264D',
+    primaryIcon: '#32264D',
+    primaryIconDisabled: '#c1bccc',
     complementText: '#9C98A6',
     baseText: '#6A6180',
     lineWhite: '#E6E6F0',
@@ -19,6 +21,7 @@ const theme = {
     buttonText: '#FFFFFF',
     boxBase: '#FFFFFF',
     boxFooter: '#FAFAFC',
+    boxFooterDark: '#ebebf5',
     success: '#4caf50',
     successDark: '#337535',
     info: '#2196f3',
@@ -28,12 +31,6 @@ const theme = {
     error: '#f44336',
     errorDark: '#a52f26',
   },
-  elevation: [
-    `box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);`,
-    `box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);`,
-    `box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);`,
-    `box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);`,
-  ],
 };
 
 export default theme;
