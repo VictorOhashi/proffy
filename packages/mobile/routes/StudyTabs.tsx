@@ -9,8 +9,24 @@ import Favorites from '../pages/Favorites';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
+type BarIconProps = {
+  icon: string;
+  focused: boolean;
+  color: string;
+  size: number;
+};
+
 const StudyTabs = () => {
   const { colors } = useTheme();
+
+  const BarIcon: React.FC<BarIconProps> = ({ icon, color, size, focused }) => (
+    <Ionicons
+      name={icon}
+      color={focused ? colors.primary : color}
+      size={size}
+    />
+  );
+
   return (
     <Navigator
       tabBarOptions={{
@@ -45,13 +61,7 @@ const StudyTabs = () => {
         component={TeacherList}
         options={{
           tabBarLabel: 'Proffys',
-          tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons
-              name="ios-easel"
-              color={focused ? colors.primary : color}
-              size={size}
-            />
-          ),
+          tabBarIcon: (props) => <BarIcon icon="ios-easel" {...props} />,
         }}
       />
       <Screen
@@ -59,9 +69,7 @@ const StudyTabs = () => {
         component={Favorites}
         options={{
           tabBarLabel: 'Favoritos',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-heart" color={color} size={size} />
-          ),
+          tabBarIcon: (props) => <BarIcon icon="ios-heart" {...props} />,
         }}
       />
     </Navigator>
