@@ -18,10 +18,10 @@ import {
   Price,
   PriceValue,
   ButtonsContainer,
-  FavoriteButton,
-  ContactButton,
   ContactButtonText,
 } from './styled';
+
+import { FavoriteButton, ContactButton } from './components/Buttons';
 
 import toCurrency from '../../utils/toCurrency';
 

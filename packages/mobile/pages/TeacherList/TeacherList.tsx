@@ -4,12 +4,15 @@ import {
   PageHeader,
   TeacherItem,
   TeacherListContainer,
+  TeacherSearchForm,
 } from '../../components';
 
 const TeacherListPage = () => {
   return (
     <>
-      <PageHeader title="Proffys disponíveis" />
+      <PageHeader title="Proffys disponíveis">
+        <TeacherSearchForm />
+      </PageHeader>
       <TeacherListContainer>
         <TeacherItem />
         <TeacherItem />

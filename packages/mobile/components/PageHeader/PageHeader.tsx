@@ -10,7 +10,7 @@ type PageHeaderProps = {
   title: string;
 };
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
   const { navigate } = useNavigation();
   return (
     <Container>
@@ -21,6 +21,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
         <Logo viewBox="0 0 434 127" width={49} height={32} />
       </TopBar>
       <Title>{title}</Title>
+      {children}
     </Container>
   );
 };

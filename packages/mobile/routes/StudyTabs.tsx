@@ -52,7 +52,7 @@ const StudyTabs = () => {
         },
         inactiveBackgroundColor: colors.boxFooter,
         activeBackgroundColor: colors.boxFooterDark,
-        inactiveTintColor: colors.primaryIconDisabled,
+        inactiveTintColor: colors.primaryDisabled,
         activeTintColor: colors.titleText,
       }}
     >

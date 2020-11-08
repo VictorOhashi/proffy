@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { ScrollView } from 'react-native';
 
 const StyledList = styled(ScrollView)`
-  margin-top: -60px;
+  margin-top: -40px;
 `;
 
 const TeacherListContainer: React.FC = ({ children }) => (

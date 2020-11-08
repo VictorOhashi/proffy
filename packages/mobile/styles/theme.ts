@@ -13,7 +13,7 @@ const theme = {
     primaryText: '#D4C2FF',
     titleText: '#32264D',
     primaryIcon: '#32264D',
-    primaryIconDisabled: '#c1bccc',
+    primaryDisabled: '#c1bccc',
     complementText: '#9C98A6',
     baseText: '#6A6180',
     lineWhite: '#E6E6F0',
