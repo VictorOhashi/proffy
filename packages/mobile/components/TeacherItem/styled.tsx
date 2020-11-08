@@ -48,12 +48,60 @@ export const Bio = styled.Text`
   color: ${({ theme }) => theme.colors.baseText};
 `;
 
-export const Footer = styled.View``;
+export const Footer = styled.View`
+  background-color: ${({ theme }) => theme.colors.boxFooter};
+  padding: 24px;
+  margin-top: 24px;
+  align-items: center;
+`;
 
-export const Price = styled.Text``;
+export const Price = styled.Text`
+  font-family: Poppins_400Regular;
+  color: ${({ theme }) => theme.colors.baseText};
+  font-size: 14px;
+`;
 
-export const PriceValue = styled.Text``;
+export const PriceValue = styled.Text`
+  font-family: Archivo_700Bold;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 16px;
+`;
 
-export const ButtonsContainer = styled.View``;
+export const ButtonsContainer = styled.View`
+  flex-direction: row;
+  margin-top: 16px;
+`;
 
-export const FavoriteButton = styled(RectButton)``;
+type FavoriteProps = {
+  favored: boolean;
+};
+
+export const FavoriteButton = styled(RectButton)<FavoriteProps>`
+  background-color: ${({ theme, favored }) =>
+    favored ? theme.colors.primary : theme.colors.error};
+  width: 56px;
+  height: 56px;
+  padding: 16px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+`;
+
+export const ContactButton = styled(RectButton)`
+  background-color: ${({ theme }) => theme.colors.secundary};
+  flex: 1;
+  height: 56px;
+  border-radius: 8px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+`;
+
+export const ContactButtonText = styled.Text`
+  color: ${({ theme }) => theme.colors.buttonText};
+  font-family: Archivo_700Bold;
+  font-size: 16px;
+  margin-left: 16px;
+`;

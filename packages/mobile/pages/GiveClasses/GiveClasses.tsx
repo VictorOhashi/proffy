@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { Container } from '../../components';
 import {
+  Container,
   Background,
   Title,
   Description,

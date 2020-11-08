@@ -7,9 +7,14 @@ import {
   PurpleHeart,
 } from '@proffy/assets/native';
 
-import { Container } from '../../components';
 import ArchorButton from './components/ArchorButton';
-import { Title, TitleBold, ButtonContainer, TotalConnections } from './styled';
+import {
+  Container,
+  Title,
+  TitleBold,
+  ButtonContainer,
+  TotalConnections,
+} from './styled';
 
 const LandingPage = () => {
   return (

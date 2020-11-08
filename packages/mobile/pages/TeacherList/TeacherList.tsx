@@ -1,12 +1,24 @@
 import React from 'react';
 
-import { PageHeader, TeacherItem } from '../../components';
+import {
+  PageHeader,
+  TeacherItem,
+  TeacherListContainer,
+} from '../../components';
 
 const TeacherListPage = () => {
   return (
     <>
       <PageHeader title="Proffys disponíveis" />
-      <TeacherItem />
+      <TeacherListContainer>
+        <TeacherItem />
+        <TeacherItem />
+        <TeacherItem />
+        <TeacherItem />
+        <TeacherItem />
+        <TeacherItem />
+        <TeacherItem />
+      </TeacherListContainer>
     </>
   );
 };

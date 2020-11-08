@@ -1,5 +1,10 @@
 import React from 'react';
 
+import {
+  HeartOutline,
+  HeartDislikeOutline,
+  Whatsapp,
+} from '@proffy/assets/native';
 
 import {
   Container,
@@ -14,9 +19,14 @@ import {
   PriceValue,
   ButtonsContainer,
   FavoriteButton,
+  ContactButton,
+  ContactButtonText,
 } from './styled';
 
+import toCurrency from '../../utils/toCurrency';
+
 const TeacherItem = () => {
+  const favored = false;
   return (
     <Container>
       <Profile>
@@ -38,12 +48,17 @@ const TeacherItem = () => {
       <Footer>
         <Price>
           {`Preço/hora:  `}
-          <PriceValue>2000</PriceValue>
+          <PriceValue>{toCurrency(20000000)}</PriceValue>
         </Price>
         <ButtonsContainer>
-          <FavoriteButton>
-           
+          <FavoriteButton favored={favored}>
+            {favored ? <HeartOutline /> : <HeartDislikeOutline />}
           </FavoriteButton>
+
+          <ContactButton>
+            <Whatsapp />
+            <ContactButtonText>Entrar em contato</ContactButtonText>
+          </ContactButton>
         </ButtonsContainer>
       </Footer>
     </Container>
