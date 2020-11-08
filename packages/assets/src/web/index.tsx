@@ -1,6 +1,8 @@
 export { default as Arrow } from './Arrow'
 export { default as Back } from './Back'
 export { default as GiveClasses } from './GiveClasses'
+export { default as HeartDislikeOutline } from './HeartDislikeOutline'
+export { default as HeartOutline } from './HeartOutline'
 export { default as Landing } from './Landing'
 export { default as Logo } from './Logo'
 export { default as PurpleHeart } from './PurpleHeart'
