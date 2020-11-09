@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components/native';
 
 import Collapse from '../Collapse';
 import Input from '../Input';
+import Select from '../Select';
 import { InputGroup, SearchForm } from './styled';
 
 const TeacherSearchForm = () => {
@@ -17,7 +18,16 @@ const TeacherSearchForm = () => {
       >
         <Input label="Matéria" placeholder="Qual a matéria?" />
         <InputGroup>
-          <Input grid={2} label="Dia da semana" placeholder="Qual o dia?" />
+          {/* placeholder="Qual o dia?" */}
+          <Select
+            grid={2}
+            label="Dia da semana"
+            options={[
+              { value: 1, label: 'aaa' },
+              { value: 1, label: 'aaa' },
+              { value: 1, label: 'aaa' },
+            ]}
+          />
           <Input grid={2} label="Horário" placeholder="Qual o horário?" />
         </InputGroup>
       </Collapse>
