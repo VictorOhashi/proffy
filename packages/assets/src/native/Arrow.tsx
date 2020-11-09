@@ -28,7 +28,7 @@ function SvgArrow({ title, titleId, ...props }: SvgProps & SVGRProps) {
         <Path
           strokeLinecap="round"
           strokeLinejoin="round"
-          stroke="#000"
+          stroke="currentColor"
           strokeWidth={2}
           d="M5 15l20 20 20-20"
           fill="none"

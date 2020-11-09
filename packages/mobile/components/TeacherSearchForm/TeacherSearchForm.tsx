@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Input, InputBlock, InputGroup, Label, SearchForm } from './styled';
+import { Filter } from '@proffy/assets/native';
 import { useTheme } from 'styled-components/native';
 
+import Collapse from '../Collapse';
+import Input from '../Input';
+import { InputGroup, SearchForm } from './styled';
+
 const TeacherSearchForm = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const theme = useTheme();
   return (
     <SearchForm>
-      {isFilterOpen && (
-        <>
-          <Label>Matéria</Label>
-          <Input
-            placeholder="Qual a matéria?"
-            placeholderTextColor={theme.colors.primaryDisabled}
-          />
-          <InputGroup>
-            <InputBlock>
-              <Label>Dia da semana</Label>
-              <Input
-                placeholder="Qual o dia?"
-                placeholderTextColor={theme.colors.primaryDisabled}
-              />
-            </InputBlock>
-            <InputBlock>
-              <Label>Horário</Label>
-              <Input
-                placeholder="Qual o horário?"
-                placeholderTextColor={theme.colors.primaryDisabled}
-              />
-            </InputBlock>
-          </InputGroup>
-        </>
-      )}
+      <Collapse
+        startAdorment={<Filter color={theme.colors.secundaryDark} />}
+        text="Filtrar po dia, hora e matéria"
+      >
+        <Input label="Matéria" placeholder="Qual a matéria?" />
+        <InputGroup>
+          <Input grid={2} label="Dia da semana" placeholder="Qual o dia?" />
+          <Input grid={2} label="Horário" placeholder="Qual o horário?" />
+        </InputGroup>
+      </Collapse>
     </SearchForm>
   );
 };

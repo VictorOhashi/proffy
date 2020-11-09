@@ -17,5 +17,6 @@ export const Title = styled.Text`
   font-size: 24px;
   line-height: 32px;
   max-width: 160px;
-  margin: 40px 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
 `;

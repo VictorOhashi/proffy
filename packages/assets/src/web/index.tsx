@@ -1,5 +1,6 @@
 export { default as Arrow } from './Arrow'
 export { default as Back } from './Back'
+export { default as Filter } from './Filter'
 export { default as GiveClasses } from './GiveClasses'
 export { default as HeartDislikeOutline } from './HeartDislikeOutline'
 export { default as HeartOutline } from './HeartOutline'

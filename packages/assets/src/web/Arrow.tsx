@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 interface SVGRProps {
   title?: string;
   titleId?: string;
@@ -15,8 +15,8 @@ function SvgArrow({
       width={50}
       height={50}
       style={{
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
       }}
       aria-labelledby={titleId}
       {...props}
@@ -31,7 +31,7 @@ function SvgArrow({
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          stroke="#000"
+          stroke="currentColor"
           strokeWidth={2}
           d="M5 15l20 20 20-20"
           fill="none"
