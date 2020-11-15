@@ -5,15 +5,18 @@ export const Label = styled.Text`
   font-family: Poppins_400Regular;
 `;
 
-export const InputBase = styled.TextInput`
+export const Input = styled.TouchableOpacity`
   height: 54px;
   background-color: ${({ theme }) => theme.colors.inputBackground};
-  color: ${({ theme }) => theme.colors.baseText};
   border-radius: 8px;
   justify-content: center;
   padding: 0 16px;
   margin-top: 4px;
   margin-bottom: 16px;
+`;
+
+export const InputText = styled.Text`
+  color: ${({ theme }) => theme.colors.baseText};
 `;
 
 export type InputBlockProps = {

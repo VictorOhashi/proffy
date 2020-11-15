@@ -18,7 +18,6 @@ const ScheduleInput: React.FC<ScheduleInputProps> = memo(
       <Select
         name="dia_semana"
         label="Dia da semana"
-        color="primaryText"
         required
         initialValue={schedule.dia_semana}
         onChange={(e) => onChange(id, e)}

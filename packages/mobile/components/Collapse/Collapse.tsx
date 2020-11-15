@@ -14,6 +14,7 @@ const ExpandButton = styled(RectButton)<ExpandButtonProps>`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0 10px;
 `;
 
 const ButtonText = styled.Text`

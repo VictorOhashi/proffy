@@ -19,6 +19,7 @@ export const SelectBase = styled(Picker)`
   height: 54px;
   padding: 0 16px;
   background-color: ${({ theme }) => theme.colors.inputBackground};
+  color: ${({ theme }) => theme.colors.baseText};
 `;
 
 export type SelectBlockProps = {
