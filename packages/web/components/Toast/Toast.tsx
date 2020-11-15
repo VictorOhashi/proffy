@@ -5,7 +5,7 @@ import {
   AlertCircleOutline,
   AlertTriangleOutline,
 } from '@styled-icons/evaicons-outline';
-import { InfoCircle, CheckCircle } from '@styled-icons/boxicons-regular';
+import { InfoCircle, CheckCircle } from '@proffy/assets';
 
 import { FadeIn, ProgressBar } from '..';
 import {

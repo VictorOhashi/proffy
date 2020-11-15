@@ -1,33 +1,33 @@
 import React from 'react';
 
-import { Filter } from '@proffy/assets/native';
+import { Filter, SearchAlt } from '@proffy/assets/native';
 import { useTheme } from 'styled-components/native';
 
 import Collapse from '../Collapse';
 import TimeInput from '../TimeInput';
 import Select from '../Select';
-import { InputGroup, SearchForm } from './styled';
+import { InputGroup, SearchForm, SubmitButton, SubmitText } from './styled';
 
 const TeacherSearchForm = () => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   return (
     <SearchForm>
       <Collapse
-        startAdorment={<Filter color={theme.colors.secundaryDark} />}
+        startAdorment={<Filter color={colors.secundaryDark} />}
         text="Filtrar po dia, hora e matéria"
       >
-        {/* <Input label="Matéria" placeholder="Qual a matéria?" /> */}
         <Select
           label="Matéria"
+          placeholder="Qual a matéria?"
           onChange={console.log}
           options={[{ value: 0, label: 'Domingo' }]}
         />
 
         <InputGroup>
-          {/* placeholder="Qual o dia?" */}
           <Select
             grid={2}
             label="Dia da semana"
+            placeholder="Qual o dia?"
             onChange={console.log}
             options={[
               { value: 0, label: 'Domingo' },
@@ -41,6 +41,10 @@ const TeacherSearchForm = () => {
           />
           <TimeInput grid={2} label="Horário" onChange={console.log} />
         </InputGroup>
+        <SubmitButton>
+          <SearchAlt color={colors.buttonText} />
+          <SubmitText>Filtrar</SubmitText>
+        </SubmitButton>
       </Collapse>
     </SearchForm>
   );

@@ -28,9 +28,9 @@ const Select: React.FC<SelectProps> = ({
   const { colors } = useTheme();
   const [value, setValue] = useState();
 
-  const handleChange: PickerProps['onValueChange'] = (v) => {
-    setValue(v);
-    onChange(v);
+  const handleChange: PickerProps['onValueChange'] = (value) => {
+    setValue(value);
+    !isNaN(value) ? onChange(value) : onChange(null);
   };
 
   return (
@@ -62,4 +62,4 @@ Select.defaultProps = {
   options: [],
 };
 
-export default Select;
+export default React.memo(Select);

@@ -1,6 +1,6 @@
 import { memo, useState, useCallback, useEffect, FormEvent } from 'react';
 
-import { SearchAlt } from '@styled-icons/boxicons-regular';
+import { SearchAlt } from '@proffy/assets';
 import { Input, Select, useToast } from '../../../components';
 import { Form, SearchButton } from '../styled';
 import api from '../../../services/api';

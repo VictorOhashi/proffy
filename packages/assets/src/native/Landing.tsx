@@ -1,6 +1,5 @@
-import * as React from 'react';
-import Svg, { Path, G, Mask, SvgProps } from 'react-native-svg';
-
+import * as React from "react";
+import Svg, { SvgProps, Path, G, Mask } from "react-native-svg";
 interface SVGRProps {
   title?: string;
   titleId?: string;
