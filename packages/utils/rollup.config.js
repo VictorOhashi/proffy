@@ -6,17 +6,6 @@ import json from '@rollup/plugin-json';
 
 import pkg from './package.json';
 
-const plugins = ({ include } = {}) => [
-  external(),
-  resolve(),
-  json(),
-  typescript({
-    abortOnError: false,
-    tsconfigOverride: { include },
-  }),
-  commonjs(),
-];
-
 export default {
   input: 'src/index.ts',
   output: [
@@ -31,5 +20,11 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: plugins(),
+  plugins: [
+    external(),
+    resolve(),
+    json(),
+    typescript({ abortOnError: false }),
+    commonjs(),
+  ],
 };
