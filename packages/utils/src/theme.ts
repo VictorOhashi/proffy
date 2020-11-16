@@ -1,4 +1,4 @@
-const theme = {
+const defaultTheme = {
   colors: {
     background: '#F0F0F7',
     primaryLighter: '#9871F5',
@@ -33,4 +33,6 @@ const theme = {
   },
 };
 
-export default theme;
+export type Theme = typeof defaultTheme;
+
+export default defaultTheme;

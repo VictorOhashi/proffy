@@ -1,0 +1,11 @@
+{
+  "name": "@types/proffy",
+  "version": "0.1.0",
+  "private": true,
+  "types": "index.d.ts",
+  "devDependencies": {
+    "@proffy/utils": "0.1.0",
+    "@types/styled-components": "5.1.4",
+    "typescript": "^4.0.5"
+  }
+}

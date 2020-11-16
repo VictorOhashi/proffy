@@ -16,6 +16,8 @@ import api from '../../services/api';
 
 import { Container, Content, Footer, FooterText, SaveButton } from './styled';
 
+type Materia = { id: number; materia: string };
+
 const FormInputs = memo(() => {
   const [formState, setFormState] = useState({});
   const [materias, setMaterias] = useState([]);
@@ -26,7 +28,9 @@ const FormInputs = memo(() => {
     api
       .get('materias')
       .then(({ data }) =>
-        setMaterias(data.map((d) => ({ value: d.id, label: d.materia })))
+        setMaterias(
+          data.map((d: Materia) => ({ value: d.id, label: d.materia }))
+        )
       )
       .catch((e) => showToast(e.message, { type: 'error' }));
   }, []);

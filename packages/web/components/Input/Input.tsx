@@ -1,8 +1,8 @@
 import { memo, useState } from 'react';
 
+import { stringFormat } from '@proffy/utils';
 import Label from '../Label';
 import { InputBlock, StyledInput } from './styled';
-import stringFormat from '../../utils/stringFormat';
 
 type Props = {
   label: string;

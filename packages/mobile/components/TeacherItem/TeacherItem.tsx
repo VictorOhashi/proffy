@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Aula } from 'proffy';
 import {
   HeartOutline,
   HeartDislikeOutline,
   Whatsapp,
 } from '@proffy/assets/native';
+import { toNativeCurrency } from '@proffy/utils';
 
 import {
   Container,
@@ -23,32 +25,26 @@ import {
 
 import { FavoriteButton, ContactButton } from './components/Buttons';
 
-import toCurrency from '../../utils/toCurrency';
+type TeacherItemProps = {
+  aula: Aula;
+};
 
-const TeacherItem = () => {
+const TeacherItem: React.FC<TeacherItemProps> = ({ aula }) => {
   const favored = false;
   return (
     <Container>
       <Profile>
-        <Avatar source={{ uri: 'https://github.com/VictorOhashi.png' }} />
+        <Avatar source={{ uri: aula.avatar }} />
         <ProfileInfo>
-          <Name>Victor</Name>
-          <Subject>Quimica</Subject>
+          <Name>{aula.nome}</Name>
+          <Subject>{aula.materia}</Subject>
         </ProfileInfo>
       </Profile>
-      <Bio>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </Bio>
+      <Bio>{aula.bio}</Bio>
       <Footer>
         <Price>
           {`Preço/hora:  `}
-          <PriceValue>{toCurrency(20000000)}</PriceValue>
+          <PriceValue>{toNativeCurrency(aula.custo)}</PriceValue>
         </Price>
         <ButtonsContainer>
           <FavoriteButton favored={favored}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Landing,
@@ -8,6 +8,8 @@ import {
 } from '@proffy/assets/native';
 
 import ArchorButton from './components/ArchorButton';
+import api from '../../services/api';
+
 import {
   Container,
   Title,
@@ -17,6 +19,12 @@ import {
 } from './styled';
 
 const LandingPage = () => {
+  const [totalConexoes, setTotalConexoes] = useState(0);
+
+  useEffect(() => {
+    api.get('/conexoes').then(({ data }) => setTotalConexoes(data.total));
+  }, []);
+
   return (
     <Container>
       <Landing width="100%" />
@@ -37,7 +45,7 @@ const LandingPage = () => {
         </ArchorButton>
       </ButtonContainer>
       <TotalConnections>
-        Total de 285 conexões já realizadas. <PurpleHeart />
+        Total de {totalConexoes} conexões já realizadas. <PurpleHeart />
       </TotalConnections>
     </Container>
   );

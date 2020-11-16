@@ -1,20 +1,10 @@
 import { useRouter } from 'next/router';
 
 import { SearchOff } from '@styled-icons/material';
+import { Aula } from 'proffy';
 import { FadeIn, PageHeader, TeacherItem, EmptyState } from '../../components';
 import { Container, MainContent } from './styled';
 import TeacherListFilter from './components/TeacherListFilter';
-
-export type Aula = {
-  id: number;
-  materia: string;
-  custo: number;
-  nome: string;
-  email: string;
-  avatar: string;
-  whatsapp: number;
-  bio: string;
-};
 
 type TeacherListProps = {
   aulas: Array<Aula>;

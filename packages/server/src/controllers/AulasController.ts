@@ -1,19 +1,8 @@
 import { Request, Response } from 'express';
 
+import { Horario, AulasFilter } from 'proffy';
+import { convertHoursToMinutes } from '@proffy/utils';
 import db from '../database/connection';
-import convertHoursToMinutes from '../utils/convertHoursToMinutes';
-
-type Horario = {
-  dia_semana: number;
-  horario_inicio: string;
-  horario_fim: string;
-};
-
-type AulasFilter = {
-  materia: string;
-  horario: string;
-  dia_semana: string;
-};
 
 export default class AulasController {
   async index(req: Request, res: Response) {

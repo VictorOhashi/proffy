@@ -1,5 +1,8 @@
 import { memo } from 'react';
+
+import { Aula } from 'proffy';
 import { Whatsapp } from '@proffy/assets';
+import { toCurrency } from '@proffy/utils';
 
 import {
   ContainerItem,
@@ -8,8 +11,6 @@ import {
   ContactButton,
 } from './styled';
 import api from '../../services/api';
-import toCurrency from '../../utils/toCurrency';
-import { Aula } from '../../containers/TeacherList';
 
 type TeacherItemProps = {
   aula: Aula;

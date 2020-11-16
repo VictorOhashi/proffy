@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { AulasFilter } from 'proffy';
 import { Filter, SearchAlt } from '@proffy/assets/native';
 import { useTheme } from 'styled-components/native';
 
@@ -7,9 +8,37 @@ import Collapse from '../Collapse';
 import TimeInput from '../TimeInput';
 import Select from '../Select';
 import { InputGroup, SearchForm, SubmitButton, SubmitText } from './styled';
+import api from '../../services/api';
 
-const TeacherSearchForm = () => {
+type Materia = { id: number; materia: string };
+
+type TeacherSearchForm = {
+  onSubmit: (value: AulasFilter) => void;
+};
+
+const TeacherSearchForm: React.FC<TeacherSearchForm> = ({ onSubmit }) => {
   const { colors } = useTheme();
+  const [materias, setMaterias] = useState([]);
+  const [values, setValues] = useState({});
+
+  useEffect(() => {
+    api
+      .get('materias')
+      .then(({ data }) =>
+        setMaterias(
+          data.map((d: Materia) => ({ value: d.id, label: d.materia }))
+        )
+      );
+  }, []);
+
+  const handleChange = (value: any, name: string) => {
+    setValues((v) => ({ ...v, [name]: value }));
+  };
+
+  const handleSubmit = () => {
+    onSubmit(values);
+  };
+
   return (
     <SearchForm>
       <Collapse
@@ -19,8 +48,8 @@ const TeacherSearchForm = () => {
         <Select
           label="Matéria"
           placeholder="Qual a matéria?"
-          onChange={console.log}
-          options={[{ value: 0, label: 'Domingo' }]}
+          onChange={(v) => handleChange(v, 'materia')}
+          options={materias}
         />
 
         <InputGroup>
@@ -28,7 +57,7 @@ const TeacherSearchForm = () => {
             grid={2}
             label="Dia da semana"
             placeholder="Qual o dia?"
-            onChange={console.log}
+            onChange={(v) => handleChange(v, 'dia_semana')}
             options={[
               { value: 0, label: 'Domingo' },
               { value: 1, label: 'Segunda-feira' },
@@ -39,9 +68,13 @@ const TeacherSearchForm = () => {
               { value: 6, label: 'Sábado' },
             ]}
           />
-          <TimeInput grid={2} label="Horário" onChange={console.log} />
+          <TimeInput
+            grid={2}
+            label="Horário"
+            onChange={(v) => handleChange(v, 'horario')}
+          />
         </InputGroup>
-        <SubmitButton>
+        <SubmitButton onPress={() => handleSubmit()}>
           <SearchAlt color={colors.buttonText} />
           <SubmitText>Filtrar</SubmitText>
         </SubmitButton>

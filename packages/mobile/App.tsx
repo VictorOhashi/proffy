@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { defaultTheme } from '@proffy/utils';
 import { AppLoading } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
@@ -13,7 +14,6 @@ import {
   Poppins_600SemiBold,
 } from '@expo-google-fonts/poppins';
 
-import defaultTheme from './styles/theme';
 import AppStack from './routes/AppStack';
 
 const App = () => {

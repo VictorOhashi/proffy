@@ -11,12 +11,12 @@ import {
   CloseOutline,
   ArrowIosDownwardOutline,
 } from '@styled-icons/evaicons-outline';
+import { matchText } from '@proffy/utils';
 
 import Label from '../Label';
 import { SelectBlock, InputContainer, SelectInput } from './styled';
 
 import useClickAway from '../../hooks/useClickAway';
-import matchText from '../../utils/matchText';
 
 import SelectButton from './components/SelectButton';
 import SelectOptions from './components/SelectOptions';

@@ -9,11 +9,12 @@ export default class MateriasController {
   async index(req: Request, res: Response) {
     const { nome } = req.query as MateriasFilter;
 
-    const materias = await db('materias').modify((query) => {
-      if (nome) {
-        query.where('materias.materia', '=', [nome]);
-      }
-    });
+    const materias = await db('materias').where(
+      'materias.materia',
+      'like',
+      `%${nome}%`
+    );
+
     return res.json(materias);
   }
 

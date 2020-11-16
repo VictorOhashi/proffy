@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
+import { getTime } from '@proffy/utils';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Input, InputText, InputBlock, Label, InputBlockProps } from './styled';
-import { getTime } from '../../utils/getTime';
 
 type InputProps = InputBlockProps & {
   label?: string;
