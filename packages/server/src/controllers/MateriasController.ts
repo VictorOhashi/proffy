@@ -7,7 +7,7 @@ type MateriasFilter = {
 
 export default class MateriasController {
   async index(req: Request, res: Response) {
-    const { nome } = req.query as MateriasFilter;
+    const { nome = '' } = req.query as MateriasFilter;
 
     const materias = await db('materias').where(
       'materias.materia',
